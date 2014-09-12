@@ -17,14 +17,4 @@ app.controller('boardCtrl', ['$scope', '$http', '$filter','urlWithoutParam','dbK
 
         };
 
-    /*
-        var log = [];
-        angular.forEach(data, function (value, key) {
-            this.push(key + ': ' + value);
-        }, log);*/
-
-
-
-
-
 }]);

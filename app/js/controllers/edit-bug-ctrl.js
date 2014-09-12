@@ -1,25 +1,10 @@
-/*
-angular.module('app', ['$resource']).
-    factory('resourceProv', function($resource){
-
-        return $resource('https://api.mongolab.com/api/1/databases/bugsdemodb/collections/bugscollection?q={"id":'+6+'}&apiKey=aQulivByDLdq_F1mhTgUSXG4eYLJJ8rs', {}, {
-
-
-            query: {method:'GET', params:{entryId:''}, isArray:true},
-            post: {method:'POST'},
-            update: {method:'PUT', params: {entryId: '@entryId'}},
-            remove: {method:'DELETE'}
-        })
-    });*/
-
-
 app.controller('BugDetailCtrl', ['$scope', '$routeParams', '$http','$resource', 'bugResource',
     function ($scope, $routeParams, $http, $resource , bugResource) {
      //   console.log($resource.query)
        // var Bug = $resource('https://api.mongolab.com/api/1/databases/bugsdemodb/collections/bugscollection?apiKey=aQulivByDLdq_F1mhTgUSXG4eYLJJ8rs');
 
-        var ds = bugResource.query({id:2})
-        console.log(ds)
+        var request = bugResource.query()
+        console.log(request)
        // var bugs = Bug.query({id:['0'].id})
 
       //  console.log( bugs['f'].id)
