@@ -7,7 +7,7 @@
                 <div class="control-group">
                     <label class="control-label" for="new_bug_id">Ticket Id {{newId}}</label>
                     <div class="controls">
-                        <input id="new_bug_id" readonly="true" ng-value="{{newId}}">
+                        <input id="new_bug_id" data-ng-model="newId"  readonly="true" ng-value="{{newId}}">
                     </div>
                 </div>
                 <div class="control-group">
@@ -43,7 +43,6 @@
                             <option value="Resource bug">Resource bug</option>
                             <option value="Interfacing bug">Interfacing bug</option>
                             <option value="Performance bug ">Performance bug</option>
-
                         </select>
                     </div>
                 </div>

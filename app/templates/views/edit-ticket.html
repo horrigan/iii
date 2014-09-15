@@ -1,7 +1,7 @@
 <div class="new_ticket_content">
 
     <div class="btr-panel">
-        <h4 class="main_title">Edit ticket # {{bugId}}</h4>
+        <h4 class="main_title">Edit ticket # {{edit_bug.id}}</h4>
 
         <form name="ticketForm" class="form-horizontal">
             <fieldset>
@@ -9,29 +9,31 @@
                     <label class="control-label" for="title">Title</label>
 
                     <div class="controls">
-                        <input data-ng-model="title" type="text" id="title" ng-readonly="false" value=''>
+                        <input type="text"  id="title" ng-readonly="false" value='{{edit_bug.title}}' data-ng-model="edit_bug.title">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="created_date">Created Date</label>
 
                     <div class="controls">
-                        <input data-ng-model="createdDate" type="text" id="created_date" ng-readonly="true" value=''>
+                        <input data-ng-model="edit_bug.createdDate" type="text" id="created_date" ng-readonly="true" value='{{edit_bug.createdDate}}'>
+                        <span>{{edit_bug.createdDate}}</span>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="description">Description</label>
 
                     <div class="controls">
-                        <textarea data-ng-model="desc" id="description" class="new_ticket_desc" rows="7" type="text"
-                                  ng-readonly="readonly" required>{{th.id}}</textarea>
+                        <textarea id="description" data-ng-model="edit_bug.description" class="new_ticket_desc" rows="7" type="text" required>
+                            {{edit_bug.description}}
+                        </textarea>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="type">* Type</label>
 
                     <div class="controls">
-                        <select data-ng-model="type" id="type" ng-readonly="readonly" required>
+                        <select id="type" ng-readonly="readonly" required value="{{edit_bug.type}}" data-ng-model="edit_bug.type">
                             <option value="Logic bug">Logic bug</option>
                             <option value="Syntax bug">Syntax bug</option>
                             <option value="Resource bug">Resource bug</option>
@@ -45,7 +47,7 @@
                     <label class="control-label" for="priority">Priority</label>
 
                     <div class="controls">
-                        <select id="priority" data-ng-model="priority" ng-readonly="readonly" required>
+                        <select id="priority" value="{{edit_bug.value}}" ng-readonly="readonly" data-ng-model="edit_bug.value" required>
                             <option value="1">Low</option>
                             <option value="2">Normal</option>
                             <option value="3">Important</option>
@@ -57,14 +59,14 @@
                     <label class="control-label" for="assignee">* Assignee</label>
 
                     <div class="controls">
-                        <input class="span2" data-ng-model="assignee" type="text" id="assignee" ng-readonly="readonly">
+                        <input class="span2" value="{{edit_bug.assignee}}" type="text" id="assignee" data-ng-model="edit_bug.assignee" ng-readonly="readonly">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="status">Status</label>
 
                     <div class="controls">
-                        <select id="status" data-ng-model="status" ng-readonly="readonly" required>
+                        <select id="status" ng-value="{{edit_bug.status}}" data-ng-model="edit_bug.status"  ng-readonly="readonly" required>
                             <option value="todo">To Do</option>
                             <option value="inprogress">In Progress</option>
                             <option value="resolved ">Resolved</option>
@@ -74,7 +76,7 @@
 
                 <div class="control-group submit_panel">
                     <div class="controls">
-                        <a class="btn btn-primary" ng-click="" type="submit">Edit</a>
+                        <a class="btn btn-primary" ng-click="edit(edit_bug)" type="submit">Edit</a>
                         <a class="btn" ng-href="#/">Cancel</a>
                     </div>
                 </div>
@@ -88,9 +90,7 @@
 
                     <div class="controls">
 
-                        <textarea id="comments" data-ng-model="ticket.comment" class="coment_textarea"
-                                  placeholder="Something about problem" rows="7" type="text"
-                                  ng-readonly="readonly"></textarea>
+                        <textarea id="comments" data-ng-model="ticket.comment" class="coment_textarea" placeholder="Something about problem" rows="7" type="text"ng-readonly="readonly"></textarea>
                         <span class="name_author">your name</span><input data-ng-model="ticket.comment_author"
                                                                          type="text"
                                                                          placeholder="John Doe" class="coment_author"
@@ -98,11 +98,11 @@
                                                                          maxlength="20">
 
 
-                        <a class="btn btn-primary" ng-click="addReview()" type="submit">Post a comment</a>
+                        <a class="btn btn-primary" ng-click="addReview(ticket)" type="submit">Post a comment</a>
                     </div>
                 </form>
             </div>
-            <div  data-ng-repeat="comment in comments">
+            <div data-ng-repeat="comment in edit_bug.comments">
                 <div class="coment_wrap">
                     <div class="coment_com_leaved">{{comment.comment}}</div>
                     <div class="coment_author_leaved">author: {{comment.author}}</div>
@@ -121,5 +121,4 @@
 
         </form>
     </div>
-</div>
 </div>
