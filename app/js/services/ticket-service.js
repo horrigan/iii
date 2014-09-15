@@ -42,17 +42,3 @@ app.factory('bugResourceEdit', ['$resource','myDbUrl',
             }
         })
     }]);
-
-/*
-app.provider('Post', function() {
-    this.$get = ['$resource','myDbUrl', function($resource,myDbUrl) {
-        var Post = $resource(myDbUrl+'/:bugId', {}, {
-            update: {
-                method: 'PUT'
-            }
-        });
-
-        return Post;
-    }];
-});*/
-/*

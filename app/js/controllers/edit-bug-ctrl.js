@@ -32,7 +32,7 @@ app.controller('BugDetailCtrl', ['$scope', '$stateParams', '$http', '$resource',
                 date: commentData.comment_time
             };
         };
-
+     
 
     }]);
 

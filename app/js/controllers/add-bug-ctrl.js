@@ -27,3 +27,4 @@ app.controller('newTicketCtrl', ['$scope', '$http', '$location', '$stateParams',
             $location.path('/')
 };
 
+    }]);
