@@ -91,29 +91,34 @@
             <hr>
             <div class="control-group">
                 <form name="commentForm">
-                    <label class="control-label" for="comments">leave your comment</label>
+                    <fieldset>
+                        <label class="control-label" for="comments">leave your comment</label>
 
-                    <div class="controls">
+                        <div class="controls">
 
-                        <textarea id="comments" data-ng-model="ticket.comment" class="coment_textarea"
-                                  placeholder="Something about problem" rows="7" type="text"
-                                  ng-readonly="readonly"></textarea>
-                        <span class="name_author">your name</span><input data-ng-model="ticket.comment_author"
-                                                                         type="text"
-                                                                         placeholder="John Doe" class="coment_author"
-                                                                         ng-readonly="readonly"
-                                                                         maxlength="20">
+                            <textarea id="comments" data-ng-model="ticket.comment" class="coment_textarea"
+                                      placeholder="Something about problem" rows="7" type="text"
+
+                                      ng-readonly="readonly"></textarea>
+                            <span class="name_author">your name</span><input data-ng-model="ticket.comment_author"
+                                                                             type="text"
+                                                                             placeholder="John Doe" class="coment_author"
+                                                                             ng-readonly="readonly"
+
+                                                                             maxlength="20">
 
 
-                        <input class="btn btn-primary" ng-click="addReview(ticket)" type="submit" value="Post comment">
-                    </div>
+
+                        </div>
+                        <input class="btn btn-primary" ng-disabled="commentForm.$invalid" ng-click="addReview(ticket)" type="submit" value="Post comment">
+                    </fieldset>
                 </form>
             </div>
             <div data-ng-repeat="comment in edit_bug.comments">
                 <div class="coment_wrap">
                     <div class="coment_com_leaved">{{comment.comment}}</div>
-                    <div class="coment_author_leaved">author: {{comment.author}}</div>
-                    <div class="coment_date_leaved">date: {{comment.date}}</div>
+                    <div class="coment_author_leaved">author: {{comment.comment_author}}</div>
+                    <div class="coment_date_leaved">date: {{comment.comment_time | date:"dd/MM/yyyy"}}</div>
                 </div>
             </div>
 
