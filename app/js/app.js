@@ -1,4 +1,4 @@
-var app = angular.module('bugtracker', ['ui.router', "ngResource","ngRoute",'ngDragDrop' ] );
+var app = angular.module('bugtracker', ['ui.router', "ngResource","ngRoute", 'ngDragDrop', 'app.directives.newBug' ] );
 app.config(function ($stateProvider, $urlRouterProvider){
     $stateProvider
         .state('home',{

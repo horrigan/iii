@@ -185,3 +185,18 @@ content{
     text-align: center;
     text-decoration: underline;
 }
+.readonly{
+    background: #eeeeec;
+}
+.ng-invalid.ng-dirty {
+    border-color: #FA787E;
+    box-shadow: 1px 1px 3px green #FA787E;
+}
+
+.ng-valid.ng-dirty {
+    border-color: forestgreen;
+    box-shadow: 1px 1px 3px green forestgreen;
+}
+.ng-pristine ng-invalid{
+    border-color: gray;
+}

@@ -1,10 +1,12 @@
-<content ng-controller="boardCtrl">
-    <div class="row" >
-        <div class="col" class="bin">
+<content >
+    <div class="row">
+        <div class="col">
             <div class="col_name first_col">To Do</div>
-            <div new-bugs ng-repeat="bug in bugs | filter: {'status':'todo'}:true "></div>
+            <div new-bugs ng-repeat="bug in bugs | filter: {'status':'todo'}:true ">
+                <div> bug="bug"</div>
+            </div>
         </div>
-        <div  class="col" class="bin">
+        <div  class="col" >
             <div class="col_name sec_col">In progress</div>
             <div new-bugs ng-repeat="bug in bugs | filter: {'status':'inprogress'}:true "></div>
         </div>

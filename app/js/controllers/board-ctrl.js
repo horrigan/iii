@@ -1,4 +1,5 @@
-app.controller('boardCtrl', ['$scope', '$http', '$filter','bugResourceAll', function ($scope, $http, $filter, bugResourceAll ) {
+
+app.controller('boardCtrl', ['$scope', '$http', '$filter', 'bugResourceAll', function ($scope, $http, $filter, bugResourceAll) {
     var bugsBoard = bugResourceAll.query();
     bugsBoard.$promise.then(
         function (result) {
@@ -6,15 +7,8 @@ app.controller('boardCtrl', ['$scope', '$http', '$filter','bugResourceAll', func
         }
     );
 }
-
 ]);
-app.controller('dndCtrl', function($scope){
 
-});
 
-app.directive('newBugs', function () {
-    return {
-        restrict: 'A',
-        templateUrl: 'templates/partials/mybug.html'
-    }
-});
+
+

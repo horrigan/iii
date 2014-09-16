@@ -24,7 +24,7 @@
                     <label class="control-label" for="description">Description</label>
 
                     <div class="controls">
-                        <textarea id="description" data-ng-model="edit_bug.description" class="new_ticket_desc" rows="7" type="text" required>
+                        <textarea id="description" data-ng-model="edit_bug.description" class="new_ticket_desc" rows="7"  required>
                             {{edit_bug.description}}
                         </textarea>
                     </div>
@@ -76,7 +76,7 @@
 
                 <div class="control-group submit_panel">
                     <div class="controls">
-                        <a class="btn btn-primary" ng-click="edit(edit_bug)" type="submit">Edit</a>
+                        <input class="btn btn-primary" ng-click="edit(edit_bug)" type="submit" value="Edit">
                         <a class="btn" ng-href="#/">Cancel</a>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
 
                     <div class="controls">
 
-                        <textarea id="comments" data-ng-model="ticket.comment" class="coment_textarea" placeholder="Something about problem" rows="7" type="text"ng-readonly="readonly"></textarea>
+                        <textarea id="comments"  data-ng-model="ticket.comment" class="coment_textarea" placeholder="Something about problem" rows="7" type="text"ng-readonly="readonly"></textarea>
                         <span class="name_author">your name</span><input data-ng-model="ticket.comment_author"
                                                                          type="text"
                                                                          placeholder="John Doe" class="coment_author"
@@ -98,7 +98,7 @@
                                                                          maxlength="20">
 
 
-                        <a class="btn btn-primary" ng-click="addReview(ticket)" type="submit">Post a comment</a>
+                        <input class="btn btn-primary"  ng-click="addReview(ticket)" type="submit" value="Post comment">
                     </div>
                 </form>
             </div>

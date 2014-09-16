@@ -1,13 +1,13 @@
-app.controller('newTicketCtrl', ['$scope', '$http', '$location', '$stateParams', 'bugResourceAll', 'PostToDB',
-    function ($scope, $http, $location, $stateParams, bugResourceAll, PostToDB) {
+app.controller('newTicketCtrl', ['$scope', '$http', '$location', '$stateParams', 'bugResourceAll', 'PostToDB', '$filter',
+    function ($scope, $http, $location, $stateParams, bugResourceAll, PostToDB,$filter) {
         $scope.date = new Date();
+        $scope.today = $filter('date')(new Date(),'dd-MM-yyyy');
         $scope.status = 'todo';
         var bugNum = bugResourceAll.query();
         bugNum.$promise.then(
             function (data) {
                 $scope.newbug = data;
                 $scope.newId = data.length + 1
-
             }
         );
         $scope.PostBugToDb = function () {
@@ -19,7 +19,7 @@ app.controller('newTicketCtrl', ['$scope', '$http', '$location', '$stateParams',
                 status: $scope.status,
                 priority: $scope.priority,
                 assignee: $scope.assignee,
-                createdDate: $scope.date,
+                createdDate: $scope.today,
                 updateDate: '',
                 resolvedDate: '',
                 comments: []

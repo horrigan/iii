@@ -1,4 +1,4 @@
-<div class="new_ticket_content" ng-controller="newTicketCtrl">
+<div class="new_ticket_content">
     <div class="btr-panel">
         <h4 class="main_title">New ticket</h4>
 
@@ -7,38 +7,37 @@
                 <div class="control-group">
                     <label class="control-label" for="new_bug_id">Ticket Id {{newId}}</label>
                     <div class="controls">
-                        <input id="new_bug_id" data-ng-model="newId"  readonly="true" ng-value="{{newId}}">
+                        <input id="new_bug_id" data-ng-model="boardCtrl.newId"  readonly="true" ng-value="{{newId}}">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="created_date">Created Date</label>
 
                     <div class="controls">
-                        <input data-ng-model="createdDate" type="text" id="created_date" ng-readonly="true" value='{{date | date:"dd/MM/yyyy"}}'>
-                        <span>{{date | date:"dd/MM/yyyy"}}</span>
+                        <input data-ng-model="boardCtrl.createdDate" type="text" id="created_date" ng-readonly="true" ng-value='{{date | date:"dd/MM/yyyy"}}'>
+                        <span>{{ today }}</span>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="title">Title</label>
 
                     <div class="controls">
-                        <input type="text" data-ng-model="title" id="title" ng-readonly="false" required>
+                        <input type="text" data-ng-model="boardCtrl.title" id="title" ng-readonly="false" required>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="description">Description</label>
 
                     <div class="controls">
-                        <textarea id="description" data-ng-model="description" class="new_ticket_desc"  type="text"
-                                  ng-readonly="readonly" required></textarea>
+                        <textarea id="description" data-ng-model="boardCtrl.description" class="new_ticket_desc" required></textarea>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="type">* Type</label>
 
                     <div class="controls">
-                        <select data-ng-model="type" id="type" ng-readonly="readonly" required>
-                            <option value="Logic bug">Logic bug</option>
+                        <select data-ng-model="boardCtrl.type" id="type" required>
+                            <option value="Logic bug" selected="selected">Logic bug</option>
                             <option value="Syntax bug">Syntax bug</option>
                             <option value="Resource bug">Resource bug</option>
                             <option value="Interfacing bug">Interfacing bug</option>
@@ -50,15 +49,15 @@
                     <label class="control-label" for="status">Status</label>
 
                     <div class="controls">
-                        <input type="text" id="status" data-ng-model="status" value="todo" readonly required>
+                        <input type="text" id="status" data-ng-model="boardCtrl.status" ng-value="{{status}}" readonly >
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="priority">Priority</label>
 
                     <div class="controls">
-                        <select id="priority" data-ng-model="priority" ng-readonly="readonly" required>
-                            <option value="1">Low-Impact</option>
+                        <select id="priority" data-ng-model="boardCtrl.priority" required>
+                            <option value="1" selected="selected">Low-Impact</option>
                             <option value="2">Normal</option>
                             <option value="3">Important</option>
                             <option value="4 ">Dangerous</option>
@@ -69,14 +68,14 @@
                     <label class="control-label" for="assignee">* Assignee</label>
 
                     <div class="controls">
-                        <input class="span2" data-ng-model="assignee" type="text" id="assignee" ng-readonly="readonly" required>
+                        <input class="span2" data-ng-model="boardCtrl.assignee" type="text" id="assignee" ng-readonly="readonly" required>
                     </div>
                 </div>
 
 
                 <div class="control-group">
                     <div class="controls submit_panel" >
-                        <a class="btn btn-primary" ng-click="PostBugToDb();" type="submit">Add</a>
+                        <input class="btn btn-primary" ng-disabled="ticketForm.$invalid" ng-click="PostBugToDb(newbug)" type="submit" value="Add">
                         <a class="btn" ng-href="#/">Cancel</a>
                     </div>
                 </div>

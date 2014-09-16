@@ -18,12 +18,12 @@ app.controller('BugDetailCtrl', ['$scope', '$stateParams', '$http', '$resource',
         };
 
         $scope.addReview = function (ticket) {
-
+            $scope.comments = {};
             console.log(ticket);
             var commentData = {
                 comment_author: $scope.ticket.comment_author,
                 comment_body: $scope.ticket.comment,
-                comment_time: '10/09/2014'
+                comment_time: $scope.updateDate
             };
             this.comments.push(ticket);
             var sendedData = {
@@ -32,7 +32,7 @@ app.controller('BugDetailCtrl', ['$scope', '$stateParams', '$http', '$resource',
                 date: commentData.comment_time
             };
         };
-     
+
 
     }]);
 
