@@ -9,14 +9,16 @@
                     <label class="control-label" for="title">Title</label>
 
                     <div class="controls">
-                        <input type="text"  id="title" ng-readonly="false" value='{{edit_bug.title}}' data-ng-model="edit_bug.title">
+                        <input type="text" id="title" ng-readonly="false" value='{{edit_bug.title}}'
+                               data-ng-model="edit_bug.title">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="created_date">Created Date</label>
 
                     <div class="controls">
-                        <input data-ng-model="edit_bug.createdDate" type="text" id="created_date" ng-readonly="true" value='{{edit_bug.createdDate}}'>
+                        <input data-ng-model="edit_bug.createdDate" type="text" id="created_date" ng-readonly="true"
+                               value='{{edit_bug.createdDate}}'>
                         <span>{{edit_bug.createdDate}}</span>
                     </div>
                 </div>
@@ -24,7 +26,8 @@
                     <label class="control-label" for="description">Description</label>
 
                     <div class="controls">
-                        <textarea id="description" data-ng-model="edit_bug.description" class="new_ticket_desc" rows="7"  required>
+                        <textarea id="description" data-ng-model="edit_bug.description" class="new_ticket_desc" rows="7"
+                                  required>
                             {{edit_bug.description}}
                         </textarea>
                     </div>
@@ -33,7 +36,8 @@
                     <label class="control-label" for="type">* Type</label>
 
                     <div class="controls">
-                        <select id="type" ng-readonly="readonly" required value="{{edit_bug.type}}" data-ng-model="edit_bug.type">
+                        <select id="type" ng-readonly="readonly" required value="{{edit_bug.type}}"
+                                data-ng-model="edit_bug.type">
                             <option value="Logic bug">Logic bug</option>
                             <option value="Syntax bug">Syntax bug</option>
                             <option value="Resource bug">Resource bug</option>
@@ -47,7 +51,8 @@
                     <label class="control-label" for="priority">Priority</label>
 
                     <div class="controls">
-                        <select id="priority" value="{{edit_bug.value}}" ng-readonly="readonly" data-ng-model="edit_bug.value" required>
+                        <select id="priority" value="{{edit_bug.value}}" ng-readonly="readonly"
+                                data-ng-model="edit_bug.value" required>
                             <option value="1">Low</option>
                             <option value="2">Normal</option>
                             <option value="3">Important</option>
@@ -59,14 +64,16 @@
                     <label class="control-label" for="assignee">* Assignee</label>
 
                     <div class="controls">
-                        <input class="span2" value="{{edit_bug.assignee}}" type="text" id="assignee" data-ng-model="edit_bug.assignee" ng-readonly="readonly">
+                        <input class="span2" value="{{edit_bug.assignee}}" type="text" id="assignee"
+                               data-ng-model="edit_bug.assignee" ng-readonly="readonly">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="status">Status</label>
 
                     <div class="controls">
-                        <select id="status" ng-value="{{edit_bug.status}}" data-ng-model="edit_bug.status"  ng-readonly="readonly" required>
+                        <select id="status" ng-value="{{edit_bug.status}}" data-ng-model="edit_bug.status"
+                                ng-readonly="readonly" required>
                             <option value="todo">To Do</option>
                             <option value="inprogress">In Progress</option>
                             <option value="resolved ">Resolved</option>
@@ -81,8 +88,6 @@
                     </div>
                 </div>
             </fieldset>
-
-
             <hr>
             <div class="control-group">
                 <form name="commentForm">
@@ -90,7 +95,9 @@
 
                     <div class="controls">
 
-                        <textarea id="comments"  data-ng-model="ticket.comment" class="coment_textarea" placeholder="Something about problem" rows="7" type="text"ng-readonly="readonly"></textarea>
+                        <textarea id="comments" data-ng-model="ticket.comment" class="coment_textarea"
+                                  placeholder="Something about problem" rows="7" type="text"
+                                  ng-readonly="readonly"></textarea>
                         <span class="name_author">your name</span><input data-ng-model="ticket.comment_author"
                                                                          type="text"
                                                                          placeholder="John Doe" class="coment_author"
@@ -98,7 +105,7 @@
                                                                          maxlength="20">
 
 
-                        <input class="btn btn-primary"  ng-click="addReview(ticket)" type="submit" value="Post comment">
+                        <input class="btn btn-primary" ng-click="addReview(ticket)" type="submit" value="Post comment">
                     </div>
                 </form>
             </div>

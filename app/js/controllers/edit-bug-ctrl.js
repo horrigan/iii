@@ -8,14 +8,15 @@ app.controller('BugDetailCtrl', ['$scope', '$stateParams', '$http', '$resource',
                 $scope.edit_bug = result[0];
                // $scope.edit = function (edit_bug) {
                   // var editted_bug = bugResourceAll.update({q: '{' + '"_id":' + '"' + result[0]._id['$oid'] + '"'+ '}'},edit_bug);
-                 //   var editted_bug = bugResourceEdit.update({ '':result[0]._id['$oid']},edit_bug)
-              //  };
+                  // var editted_bug = bugResourceEdit.update({ '':result[0]._id['$oid']},edit_bug)
+               // };
             }
         );
 
-        $scope.edit = function (edit_bug) {
-            var editted_bug = bugResourceAll.update({q: '{' + '"id":' + id + '' + '}'},edit_bug);
-        };
+        //$scope.edit = function (edit_bug) {
+            //var editted_bug = bugResourceAll.update({q: '{' + '"id":' + id + '' + '}'},edit_bug);
+           // var editted = bugResourceEdit.update(edit_bug)
+       // };
 
         $scope.addReview = function (ticket) {
             $scope.comments = {};

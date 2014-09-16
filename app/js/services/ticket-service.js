@@ -33,7 +33,7 @@ app.factory('PostToDB', ['$resource','myDbUrl',
     }]);
 app.factory('bugResourceEdit', ['$resource','myDbUrl',
     function($resource, myDbUrl){
-        return $resource(myDbUrl, {}, {
+        return $resource(myDbUrl+'/:bugId', {}, {
             update: {
                 method:'PUT',
                 params: {}

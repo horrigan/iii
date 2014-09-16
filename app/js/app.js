@@ -1,19 +1,19 @@
-var app = angular.module('bugtracker', ['ui.router', "ngResource","ngRoute", 'ngDragDrop', 'app.directives.newBug' ] );
-app.config(function ($stateProvider, $urlRouterProvider){
+var app = angular.module('bugtracker', ['ui.router', "ngResource", "ngRoute", 'ngDragDrop', 'app.directives.newBug' ]);
+app.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
-        .state('home',{
+        .state('home', {
             url: '/',
-            templateUrl:'templates/views/board.html',
+            templateUrl: 'templates/views/board.html',
             controller: 'boardCtrl'
         })
-        .state('new',{
+        .state('new', {
             url: '/new/',
-            templateUrl:'templates/views/add-new-ticket.html',
+            templateUrl: 'templates/views/add-new-ticket.html',
             controller: 'newTicketCtrl'
         })
-        .state('bug',{
+        .state('bug', {
             url: '/bug/:id',
-            templateUrl:'templates/views/edit-ticket.html',
+            templateUrl: 'templates/views/edit-ticket.html',
             controller: 'BugDetailCtrl'
         })
 
