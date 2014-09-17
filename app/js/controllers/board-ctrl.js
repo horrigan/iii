@@ -1,5 +1,5 @@
-app.controller('boardCtrl', ['$scope', '$http', '$filter', 'bugResourceAll', function ($scope, $http, $filter, bugResourceAll) {
-    var bugsBoard = bugResourceAll.query();
+app.controller('boardCtrl', ['$scope', '$http', '$filter', 'BugsResource', function ($scope, $http, $filter, BugsResource) {
+    var bugsBoard = BugsResource.query();
     bugsBoard.$promise.then(
         function (result) {
             $scope.bugs = result;

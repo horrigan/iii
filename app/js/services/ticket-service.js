@@ -1,8 +1,30 @@
-app.constant('myDbUrl', 'https://api.mongolab.com/api/1/databases/bugsdemodb/collections/bugscollection?apiKey=aQulivByDLdq_F1mhTgUSXG4eYLJJ8rs');
-app.constant('urlWithoutParam','https://api.mongolab.com/api/1/databases/bugsdemodb/collections/bugscollection?');
-app.constant('dbKey','apiKey=aQulivByDLdq_F1mhTgUSXG4eYLJJ8rs');
+angular.module('mongolab', ['ngResource']).
+    factory('BugsResource', function($resource) {
+        var BugsResource = $resource('https://api.mongolab.com/api/1/databases' +
+                '/bugsdemodb/collections/bugscollection/:_id',
+            { apiKey: 'aQulivByDLdq_F1mhTgUSXG4eYLJJ8rs' }, {
+                update: { method: 'PUT' }
+            }
 
-app.factory('bugResourceAll', ['$resource','$stateParams','myDbUrl', function($resource,$stateParams, myDbUrl) {
+        );
+        BugsResource.prototype.update = function(cb) {
+            return BugsResource.update({id: this._id.$oid},
+                angular.extend({}, this, {_id:undefined}), cb);
+        };
+
+        BugsResource.prototype.destroy = function(cb) {
+            return BugsResource.remove({id: this._id.$oid}, cb);
+        };
+
+
+
+        return BugsResource
+    });
+
+
+app.constant('myDbUrl', 'https://api.mongolab.com/api/1/databases/bugsdemodb/collections/bugscollection?apiKey=aQulivByDLdq_F1mhTgUSXG4eYLJJ8rs');
+/*
+app.factory('bugResourceAll', ['$resource','myDbUrl', function($resource,myDbUrl) {
 
     return $resource(myDbUrl,{}, {
         query: {method:'GET', params:{entryId:''}, isArray:true},
@@ -11,8 +33,22 @@ app.factory('bugResourceAll', ['$resource','$stateParams','myDbUrl', function($r
         remove: {method:'DELETE'}
     })
 
-}]);
+}]);*/
+//https://api.mongolab.com/api/1/databases/bugsdemodb/collections/bugscollection?apiKey=aQulivByDLdq_F1mhTgUSXG4eYLJJ8rs
 
+/*
+        Task.prototype.update = function(cb) {
+            return Task.update({id: this._id.$oid},
+                angular.extend({}, this, {_id:undefined}), cb);
+        };
+
+        Task.prototype.destroy = function(cb) {
+            return Task.remove({id: this._id.$oid}, cb);
+        };
+
+        return Task;
+    */
+/*
 
 app.factory('bugResource', ['$resource','myDbUrl',
     function($resource, myDbUrl){
@@ -40,7 +76,7 @@ app.factory('bugResourceEdit', ['$resource','myDbUrl',
             }
         })
     }]);
-
+*/
 /*
 app.provider('Post', function() {
     this.$get = ['$resource','myDbUrl', function($resource,myDbUrl) {

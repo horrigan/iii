@@ -19,7 +19,7 @@
                     <div class="controls">
                         <input data-ng-model="edit_bug.createdDate" type="text" id="created_date" ng-readonly="true"
                                value='{{edit_bug.createdDate}}'>
-                        <span>{{edit_bug.createdDate}}</span>
+                        <span>{{edit_bug.createdDate | date:"dd/mm/yyyy"}}</span>
                     </div>
                 </div>
                 <div class="control-group">
@@ -76,7 +76,7 @@
                                 ng-readonly="readonly" required>
                             <option value="todo">To Do</option>
                             <option value="inprogress">In Progress</option>
-                            <option value="resolved ">Resolved</option>
+                            <option value="resolved">Resolved</option>
                         </select>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                 <div class="control-group submit_panel">
                     <div class="controls">
                         <input class="btn btn-primary" ng-click="edit(edit_bug)" type="submit" value="Edit">
-                        <a class="btn" ng-href="#/">Cancel</a>
+                        <a class="btn" ng-href="/">Cancel</a>
                     </div>
                 </div>
             </fieldset>

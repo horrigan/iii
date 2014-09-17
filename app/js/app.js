@@ -1,8 +1,8 @@
-var app = angular.module('bugtracker', ['ui.router', "ngResource", "ngRoute", 'ngDragDrop', 'app.directives.newBug' ]);
+var app = angular.module('bugtracker', ['ui.router','mongolab', "ngResource", "ngRoute", 'ngDragDrop', 'app.directives.newBug' ]);
 app.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('home', {
-            url: '/',
+            url: '',
             templateUrl: 'templates/views/board.html',
             controller: 'boardCtrl'
         })
