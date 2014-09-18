@@ -1,20 +1,19 @@
-var app = angular.module('bugtracker', ['ui.router','mongolab', "ngResource", "ngRoute", 'ngDragDrop', 'app.directives.newBug' ]);
+var app = angular.module('bugtracker', ['ui.router', "ngResource", "ngRoute" ]);
 app.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('home', {
             url: '',
             templateUrl: 'templates/views/board.html',
-            controller: 'boardCtrl'
+            controller: 'BoardCtrl'
         })
         .state('new', {
             url: '/new/',
             templateUrl: 'templates/views/add-new-ticket.html',
-            controller: 'newTicketCtrl'
+            controller: 'AddNewTicket'
         })
         .state('bug', {
             url: '/bug/:id',
             templateUrl: 'templates/views/edit-ticket.html',
-            controller: 'BugDetailCtrl'
-        })
-
+            controller: 'EditTicketCtrl'
+        });
 });

@@ -51,12 +51,12 @@
                     <label class="control-label" for="priority">Priority</label>
 
                     <div class="controls">
-                        <select id="priority" value="{{edit_bug.value}}" ng-readonly="readonly"
-                                data-ng-model="edit_bug.value" required>
-                            <option value="1">Low</option>
-                            <option value="2">Normal</option>
-                            <option value="3">Important</option>
-                            <option value="4 ">Dangerous</option>
+                        <select id="priority" value="{{edit_bug.priority}}" ng-readonly="readonly"
+                                data-ng-model="edit_bug.priority" required>
+                            <option value="Low">Low</option>
+                            <option value="Normal">Normal</option>
+                            <option value="Important">Important</option>
+                            <option value="Dangerous">Dangerous</option>
                         </select>
                     </div>
                 </div>
@@ -85,6 +85,7 @@
                     <div class="controls">
                         <input class="btn btn-primary" ng-click="edit(edit_bug)" type="submit" value="Edit">
                         <a class="btn" ng-href="/">Cancel</a>
+                        <a class="btn" ng-click="remove(edit_bug)">Remove</a>
                     </div>
                 </div>
             </fieldset>
@@ -95,22 +96,19 @@
                         <label class="control-label" for="comments">leave your comment</label>
 
                         <div class="controls">
-
                             <textarea id="comments" data-ng-model="ticket.comment" class="coment_textarea"
                                       placeholder="Something about problem" rows="7" type="text"
 
                                       ng-readonly="readonly"></textarea>
                             <span class="name_author">your name</span><input data-ng-model="ticket.comment_author"
                                                                              type="text"
-                                                                             placeholder="John Doe" class="coment_author"
+                                                                             placeholder="John Doe"
+                                                                             class="coment_author"
                                                                              ng-readonly="readonly"
-
                                                                              maxlength="20">
-
-
-
                         </div>
-                        <input class="btn btn-primary" ng-disabled="commentForm.$invalid" ng-click="addReview(ticket)" type="submit" value="Post comment">
+                        <input class="btn btn-primary" ng-disabled="commentForm.$invalid" ng-click="addReview(ticket)"
+                               type="submit" value="Post comment">
                     </fieldset>
                 </form>
             </div>
