@@ -1,21 +1,14 @@
-app.controller('EditTicketCtrl', function ($scope, $stateParams, $http, Ticket, $state) {
-        Ticket.get({id:$stateParams.id}).$promise.
-            then(function (data) {
-                $scope.ticket = data[0];
-        });
+app.controller('EditTicketCtrl', function ($scope, $stateParams, $http, Ticket, $state, promiseEditObj) {
+        $scope.ticket = promiseEditObj;
 
         $scope.edit = function (ticket) {
-            Ticket.update({id: ticket._id}, ticket);
-            /*
-             .$promise
-             .then($state.go('home'))*/
+            Ticket.update({_id: ticket._id.$oid}, ticket).$promise
+                .then($state.go('home'))
         };
 
         $scope.remove = function (ticket) {
-            Ticket.delete({_id: ticket._id.$oid});
-                /*
-                .$promise
-                .then($state.go('home'))*/
+            Ticket.delete({_id: ticket._id.$oid}).$promise
+                .then($state.go('home'))
         };
 
         $scope.addComment = function () {
@@ -25,10 +18,11 @@ app.controller('EditTicketCtrl', function ($scope, $stateParams, $http, Ticket, 
                 comment_time: new Date()
             };
             $scope.ticket.comments.push(commentData);
-            delete $scope.ticket._id;
-            Ticket.update({id: myId}, $scope.ticket);
+
+            Ticket.update({id: $stateParams.id}, $scope.ticket);
 
         }
+
     }
 );
 

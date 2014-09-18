@@ -1,6 +1,6 @@
 <div class="bug" id="{{bug.id}}">
     <div class="bug_content">
-        <a href="#/bug/{{bug.id}}" class="bug_title">bug id: {{bug.id}}</a>
+        <a ui-sref="bug({id: bug._id.$oid})" class="bug_title">bug id: {{bug.id}}</a>
         <span class="bug_title">bug title: {{bug.title}}</span>
         <span class="bug_desc">bug description: {{bug.description |limitTo: 20}} </span>
         <span class="bug_date">bug date:{{bug.createdDate | date:"dd/MM/yyyy"}}</span>
