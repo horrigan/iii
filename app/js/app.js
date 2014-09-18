@@ -9,7 +9,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('new', {
             url: '/new/',
             templateUrl: 'templates/views/add-new-ticket.html',
-            controller: 'AddNewTicket'
+            controller: 'AddTicketCtrl'
         })
         .state('bug', {
             url: '/bug/:id',

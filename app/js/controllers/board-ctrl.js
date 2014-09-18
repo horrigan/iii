@@ -1,6 +1,5 @@
-app.controller('BoardCtrl', function ($scope, $http, $filter, Ticket) {
-        var bugsBoard = Ticket.query();
-        bugsBoard.$promise.then(
+app.controller('BoardCtrl', function ($scope, $http, Ticket) {
+        Ticket.query().$promise.then(
             function (result) {
                 $scope.bugs = result;
             }

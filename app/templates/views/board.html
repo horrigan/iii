@@ -2,19 +2,19 @@
     <div class="row">
         <div class="col" ui-on-Drop="onDrop($event,$data,bug)">
             <div class="col_name first_col">To Do</div>
-            <div new-bugs drag="bug" ui-draggable="true" on-drop-success="dropSuccessHandler($event,$index,bug)"
+            <div new-bug-direct drag="bug" ui-draggable="true" on-drop-success="dropSuccessHandler($event,$index,bug)"
                  ng-repeat="bug in bugs | filter: {'status':'todo'}:true ">
                 <div> bug="bug"</div>
             </div>
         </div>
         <div class="col" ui-on-Drop="onDrop($event,$data,bug)">
             <div class="col_name sec_col">In progress</div>
-            <div new-bugs drag="bug" ui-draggable="true" on-drop-success="dropSuccessHandler($event,$index,bug)"
+            <div new-bug-direct drag="bug" ui-draggable="true" on-drop-success="dropSuccessHandler($event,$index,bug)"
                  ng-repeat="bug in bugs | filter: {'status':'inprogress'}:true "></div>
         </div>
         <div class="col" id="col_3" ui-on-Drop="onDrop($event,$data,bug)">
             <div class="col_name third_col">Resolved</div>
-            <div new-bugs drag="bug" ui-draggable="true" on-drop-success="dropSuccessHandler($event,$index,bug)"
+            <div new-bug-direct drag="bug" ui-draggable="true" on-drop-success="dropSuccessHandler($event,$index,bug)"
                  ng-repeat="bug in bugs| filter: {'status':'resolved'}:true "></div>
         </div>
     </div>

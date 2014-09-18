@@ -1,7 +1,7 @@
 <div class="new_ticket_content">
 
     <div class="btr-panel">
-        <h4 class="main_title">Edit ticket # {{edit_bug.id}}</h4>
+        <h4 class="main_title">Edit ticket # {{ticket.id}}</h4>
 
         <form name="ticketForm" class="form-horizontal">
             <fieldset>
@@ -9,26 +9,26 @@
                     <label class="control-label" for="title">Title</label>
 
                     <div class="controls">
-                        <input type="text" id="title" ng-readonly="false" value='{{edit_bug.title}}'
-                               data-ng-model="edit_bug.title">
+                        <input type="text" id="title" ng-readonly="false" value='{{ticket.title}}'
+                               data-ng-model="ticket.title">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="created_date">Created Date</label>
 
                     <div class="controls">
-                        <input data-ng-model="edit_bug.createdDate" type="text" id="created_date" ng-readonly="true"
-                               value='{{edit_bug.createdDate}}'>
-                        <span>{{edit_bug.createdDate | date:"dd/mm/yyyy"}}</span>
+                        <input data-ng-model="ticket.createdDate" type="text" id="created_date" ng-readonly="true"
+                               value='{{ticket.createdDate}}'>
+                        <span>{{ticket.createdDate | date:"dd/mm/yyyy"}}</span>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="description">Description</label>
 
                     <div class="controls">
-                        <textarea id="description" data-ng-model="edit_bug.description" class="new_ticket_desc" rows="7"
+                        <textarea id="description" data-ng-model="ticket.description" class="new_ticket_desc" rows="7"
                                   required>
-                            {{edit_bug.description}}
+                            {{ticket.description}}
                         </textarea>
                     </div>
                 </div>
@@ -36,8 +36,8 @@
                     <label class="control-label" for="type">* Type</label>
 
                     <div class="controls">
-                        <select id="type" ng-readonly="readonly" required value="{{edit_bug.type}}"
-                                data-ng-model="edit_bug.type">
+                        <select id="type" ng-readonly="readonly" required value="{{ticket.type}}"
+                                data-ng-model="ticket.type">
                             <option value="Logic bug">Logic bug</option>
                             <option value="Syntax bug">Syntax bug</option>
                             <option value="Resource bug">Resource bug</option>
@@ -51,8 +51,8 @@
                     <label class="control-label" for="priority">Priority</label>
 
                     <div class="controls">
-                        <select id="priority" value="{{edit_bug.priority}}" ng-readonly="readonly"
-                                data-ng-model="edit_bug.priority" required>
+                        <select id="priority" value="{{ticket.priority}}" ng-readonly="readonly"
+                                data-ng-model="ticket.priority" required>
                             <option value="Low">Low</option>
                             <option value="Normal">Normal</option>
                             <option value="Important">Important</option>
@@ -64,15 +64,15 @@
                     <label class="control-label" for="assignee">* Assignee</label>
 
                     <div class="controls">
-                        <input class="span2" value="{{edit_bug.assignee}}" type="text" id="assignee"
-                               data-ng-model="edit_bug.assignee" ng-readonly="readonly">
+                        <input class="span2" value="{{ticket.assignee}}" type="text" id="assignee"
+                               data-ng-model="ticket.assignee" ng-readonly="readonly">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="status">Status</label>
 
                     <div class="controls">
-                        <select id="status" ng-value="{{edit_bug.status}}" data-ng-model="edit_bug.status"
+                        <select id="status" ng-value="{{ticket.status}}" data-ng-model="ticket.status"
                                 ng-readonly="readonly" required>
                             <option value="todo">To Do</option>
                             <option value="inprogress">In Progress</option>
@@ -83,9 +83,9 @@
 
                 <div class="control-group submit_panel">
                     <div class="controls">
-                        <input class="btn btn-primary" ng-click="edit(edit_bug)" type="submit" value="Edit">
+                        <input class="btn btn-primary" ng-click="edit(ticket)" type="submit" value="Edit">
                         <a class="btn" ng-href="/">Cancel</a>
-                        <a class="btn" ng-click="remove(edit_bug)">Remove</a>
+                        <a class="btn" ng-click="remove(ticket)">Remove</a>
                     </div>
                 </div>
             </fieldset>
@@ -96,23 +96,23 @@
                         <label class="control-label" for="comments">leave your comment</label>
 
                         <div class="controls">
-                            <textarea id="comments" data-ng-model="ticket.comment" class="coment_textarea"
+                            <textarea id="comments" data-ng-model="ticketComment.comment" class="coment_textarea"
                                       placeholder="Something about problem" rows="7" type="text"
 
                                       ng-readonly="readonly"></textarea>
-                            <span class="name_author">your name</span><input data-ng-model="ticket.comment_author"
+                            <span class="name_author">your name</span><input data-ng-model="ticketComment.comment_author"
                                                                              type="text"
                                                                              placeholder="John Doe"
                                                                              class="coment_author"
                                                                              ng-readonly="readonly"
                                                                              maxlength="20">
                         </div>
-                        <input class="btn btn-primary" ng-disabled="commentForm.$invalid" ng-click="addReview(ticket)"
-                               type="submit" value="Post comment">
+                        <input class="btn btn-primary" ng-disabled="commentForm.$invalid" ng-click="addComment(ticketComment)"
+                                value="Post comment">
                     </fieldset>
                 </form>
             </div>
-            <div data-ng-repeat="comment in edit_bug.comments">
+            <div data-ng-repeat="comment in ticket.comments">
                 <div class="coment_wrap">
                     <div class="coment_com_leaved">{{comment.comment}}</div>
                     <div class="coment_author_leaved">author: {{comment.comment_author}}</div>
@@ -123,8 +123,8 @@
 
             <div>
                 <div class="coment_wrap">
-                    <div class="coment_com_leaved" data-ng-bind="ticket.comment" class="coment"></div>
-                    <div class="coment_author_leaved" data-ng-bind="ticket.comment_author"></div>
+                    <div class="coment_com_leaved" data-ng-bind="ticketComment.comment" class="coment"></div>
+                    <div class="coment_author_leaved" data-ng-bind="ticketComment.comment_author"></div>
                     <div class="coment_date_leaved">{{comment.date}}</div>
                 </div>
             </div>

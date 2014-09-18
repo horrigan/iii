@@ -1,9 +1,9 @@
-app.controller('AddNewTicket', function ($scope, $http, $state, $stateParams, Ticket) {
+app.controller('AddTicketCtrl', function ($scope, $http, $state, $stateParams, Ticket) {
     $scope.date = new Date();
     $scope.status = 'todo';
     Ticket.query().$promise.then(
         function (data) {
-            $scope.newbug = data;
+            $scope.newBug = data;
             $scope.newId = data.length + 1
         }
     );
