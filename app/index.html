@@ -9,23 +9,30 @@
 <body>
 <header>
     <div>
-        <a href="#/new/">Add new ticket</a>
+        <a ui-sref="add-ticket">Add new ticket</a>
+    </div>
+    <div>
+        <a ui-sref="add-author">Add new author</a>
     </div>
 </header>
 
 <ui-view></ui-view>
 
-<script src="bower_components/jquery/jquery.min.js"></script>
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-resource/angular-resource.min.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js"></script>
 <script src="js/app.js"></script>
-<script src="js/directives/bt-ticket-direct.js"></script>
+<script src="js/directives/bt-ticket.js"></script>
 <script src="js/services/ticket.js" ></script>
+<script src="js/services/author.js" ></script>
 <script src="js/services/constant.js" ></script>
 <script src="js/controllers/board-ctrl.js"></script>
 <script src="js/controllers/add-ticket-ctrl.js"></script>
+<script src="js/controllers/add-author-ctrl.js"></script>
 <script src="js/controllers/edit-ticket-ctrl.js"></script>
 </body>
 </html>

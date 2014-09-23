@@ -1,33 +1,34 @@
-var app = angular.module('bugtracker', ['ui.router', "ngResource", "ngRoute" ]);
+var app = angular.module('bugtracker', ['ui.router', "ngResource", "ngRoute", 'ui.bootstrap', 'dndLists'  ]);
 app.config(function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/');
+
     $stateProvider
-        .state('home', {
-            url: '',
+        .state('board', {
+            url: '/',
             templateUrl: 'templates/views/board.html',
             controller: 'BoardCtrl',
             resolve: {
-                promiseBoardObj: function ($http, Ticket) {
+                tickets: function ($http, Ticket) {
                     return Ticket.query().$promise
                 }
             }
         })
-        .state('new', {
-            url: '/new/',
-            templateUrl: 'templates/views/add-new-ticket.html',
-            controller: 'AddTicketCtrl',
-            resolve: {
-                promiseNewObj: function ($http, Ticket) {
-                    return Ticket.query().$promise
-                }
-            }
-        }
-    )
-        .state('bug', {
-            url: '/bug/:id',
+        .state('add-ticket', {
+            url: '/add-ticket',
+            templateUrl: 'templates/views/add-ticket.html',
+            controller: 'AddTicketCtrl'
+        })
+        .state('add-author',{
+            url: '/add-author',
+            templateUrl: 'templates/views/add-author.html',
+            controller: 'AddAuthorCtrl'
+        })
+        .state('edit-ticket', {
+            url: '/edit-ticket/:id',
             templateUrl: 'templates/views/edit-ticket.html',
             controller: 'EditTicketCtrl',
             resolve: {
-                promiseEditObj: function ($http, Ticket, $stateParams) {
+                ticket: function ($http, Ticket, $stateParams) {
                     return Ticket.get({_id: $stateParams.id}).$promise
                 }
             }

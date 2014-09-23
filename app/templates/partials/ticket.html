@@ -1,0 +1,13 @@
+<div class="bug" id="{{ticket.id}}">
+    <div class="bug_content">
+        <a ui-sref="edit-ticket({id: ticket._id.$oid})" class="bug_href">bug id: {{ticket.id}}</a>
+        <span class="bug_title ">bug title: {{ticket.title}}</span>
+        <span class="bug_desc">bug description: {{ticket.description |limitTo: 20}} </span>
+        <span class="bug_date">bug date:{{ticket.createdDate | date:"dd/MM/yyyy"}}</span>
+    </div>
+</div>
+
+
+
+
+

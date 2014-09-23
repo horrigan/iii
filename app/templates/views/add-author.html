@@ -1,0 +1,32 @@
+<div class="new_author_content">
+    <div class="btr-panel">
+        <h4 class="main_title">New author</h4>
+
+        <form name="authorForm" class="form-horizontal">
+            <fieldset>
+
+                <div class="control-group">
+                    <label class="control-label" for="author_name">Name</label>
+
+                    <div class="controls">
+                        <input data-ng-model="author.name" type="text" id="author_name" ng-readonly="false" required>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="surname">Surname</label>
+
+                    <div class="controls">
+                        <input type="text" data-ng-model="author.surname" id="surname" ng-readonly="false" required>
+                    </div>
+
+                    <div class="controls submit_panel">
+                        <input class="btn btn-primary" ng-disabled="authorForm.$invalid"
+                               ng-click="postAuthorToDb(author)"
+                               type="submit" value="Add">
+                        <a class="btn" ng-href="/">Cancel</a>
+                    </div>
+                </div>
+            </fieldset>
+         </form>
+     </div>
+</div>

@@ -23,53 +23,120 @@ time, mark, audio, video {
     font: inherit;
     vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
+
 body {
     line-height: 1;
-    background:#EEEEEC;
+    background: #EEEEEC;
 }
+
 ol, ul {
     list-style: none;
 }
+
 blockquote, q {
     quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
     content: '';
     content: none;
 }
+
+ul[dnd-list] * {
+    pointer-events: none;
+}
+
+ul[dnd-list], ul[dnd-list] > li {
+    pointer-events: auto;
+    position: relative;
+}
+
+.typesDemo ul[dnd-list] {
+    min-height: 42px;
+    padding-left: 0px;
+}
+
+.typesDemo ul[dnd-list] .dndDraggingSource {
+    display: none;
+}
+
+.typesDemo ul[dnd-list] .dndPlaceholder {
+    display: block;
+    background-color: #ddd;
+    min-height: 42px;
+}
+
+.typesDemo ul[dnd-list] li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+
+    /* Disable text selection if item is not draggable */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.typesDemo ul[dnd-list] li.background-man {
+    background-color: #CAE0FC;
+    color: #2F4D99;
+}
+
+.typesDemo ul[dnd-list] li.background-woman {
+    background-color: #FFE2F5;
+    color: #D84FA7;
+}
+
+.drop_list {
+    min-height: 200px;
+}
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-header{
+
+header {
     background: none repeat scroll 0 0 #add8e6;
     border-radius: 5px;
     height: 50px;
     margin: 10px auto;
     width: 800px;
 }
-header div{
 
+header div {
+    float: left;
     height: 100%;
     outline: 1px solid white;
     text-align: center;
     width: 70px;
 }
-header div a{
+
+header div a {
     color: white;
     position: relative;
     top: 6px;
 
 }
-content{
+
+content {
 
 }
+
 .row {
     display: table;
     margin: 0 auto;
@@ -77,91 +144,113 @@ content{
     min-width: 800px;
     max-width: 900px;
 }
-.col{
+
+.col {
     box-shadow: 5px 10px 10px #fdfdfd;
-    border:1px solid #add8e6;
+    border: 1px solid #add8e6;
     background: #FDFDFD;
     display: table-cell;
     width: 32%;
     padding: 10px;
 }
+
 .col_name {
     padding-bottom: 5px;
     text-align: center;
     width: 100%;
 }
-.first_col{
-    border-bottom:5px solid red;
+
+.first_col {
+    border-bottom: 5px solid red;
 }
-.sec_col{
-    border-bottom:5px solid #ffff00;
+
+.sec_col {
+    border-bottom: 5px solid #ffff00;
 }
-.third_col{
-    border-bottom:5px solid darkgreen;
+
+.third_col {
+    border-bottom: 5px solid darkgreen;
 }
-.bug{
-    width:80%;
-    color:#000000;
-    margin:10px auto 10px;
-    border-radius:5px;
+
+.bug {
+    width: 80%;
+    color: #000000;
+    margin: 10px auto 10px;
+    border-radius: 5px;
     padding: 10px;
 }
+
 .bug_content {
     border: 1px solid #00B7FD;
     padding: 10px;
     border-radius: 4px;
 }
+
 .bug_content > * {
     display: block;
 }
+
 .bug_date {
     font-size: 11px;
     position: relative;
     text-align: right;
     top: 5px;
 }
-#col_3 .bug_title{
+
+#col_3 .bug_title {
     text-decoration: line-through;
 }
-.new_ticket_content {
+
+.bug_href {
+    pointer-events: auto !important;
+}
+
+.new_ticket_content, .new_author_content {
     border: 2px solid #ADD8E6;
     border-radius: 5px;
     margin: 0 auto 30px;
     padding: 30px;
     width: 600px;
 }
-#created_date{
-    display:none;
+
+#created_date {
+    display: none;
 }
-.status_todo{
+
+.status_todo {
     display: none;
 
 }
-.status_span{
-    color:darkgreen;
+
+.status_span {
+    color: darkgreen;
 }
+
 .coment_wrap {
     border: 2px dashed #add8e6;
     margin: 15px auto;
     padding: 10px;
     overflow-x: hidden;
 }
-.coment_textarea{
+
+.coment_textarea {
     text-indent: 5px;
     height: 60px;
     resize: none;
     width: 100%;
 }
-.coment_author{
-    float:right;
+
+.coment_author {
+    float: right;
 
 }
-.name_author{
-    margin-left:295px;
-    position:relative;
 
+.name_author {
+    margin-left: 295px;
+    position: relative;
 
 }
+
 .coment_com_leaved {
     width: 100%;
     border-bottom: 1px solid gray;
@@ -169,22 +258,27 @@ content{
     padding: 7px;
     font-weight: 800;
 }
-.coment_author_leaved{
-    float:right;
+
+.coment_author_leaved {
+    float: right;
 
 }
-#new_bug_id{
+
+#new_bug_id {
     display: none;
 }
-.new_ticket_desc{
+
+.new_ticket_desc {
     height: 90px;
     width: 535px;
-    resize:none;
+    resize: none;
 }
-.submit_panel{
-    margin:10px auto;
+
+.submit_panel {
+    margin: 10px auto;
 }
-.main_title{
+
+.main_title {
     color: black;
     font-size: 20px;
     font-weight: 800;
@@ -192,9 +286,11 @@ content{
     text-align: center;
     text-decoration: underline;
 }
-.readonly{
+
+.readonly {
     background: #eeeeec;
 }
+
 .ng-invalid.ng-dirty {
     border-color: #FA787E;
     box-shadow: 1px 1px 3px green #FA787E;
@@ -204,6 +300,7 @@ content{
     border-color: forestgreen;
     box-shadow: 1px 1px 3px green forestgreen;
 }
-.ng-pristine ng-invalid{
+
+.ng-pristine .ng-invalid {
     border-color: gray;
 }

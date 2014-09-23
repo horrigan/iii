@@ -1,28 +1,25 @@
-app.controller('EditTicketCtrl', function ($scope, $stateParams, $http, Ticket, $state, promiseEditObj) {
-        $scope.ticket = promiseEditObj;
+app.controller('EditTicketCtrl', function ($scope, $stateParams, $http, Ticket, $state, ticket) {
+        $scope.ticket = ticket;
 
         $scope.edit = function (ticket) {
             Ticket.update({_id: ticket._id.$oid}, ticket).$promise
-                .then($state.go('home'))
+                .then(function () {
+                    $state.go('board')
+                })
         };
 
         $scope.remove = function (ticket) {
             Ticket.delete({_id: ticket._id.$oid}).$promise
-                .then($state.go('home'))
+                .then(function () {
+                    $state.go('board')
+                })
         };
 
-        $scope.addComment = function () {
-            var commentData = {
-                comment_author: $scope.ticketComment.comment_author || 'Anonymous',
-                comment: $scope.ticketComment.comment || '',
-                comment_time: new Date()
-            };
-            $scope.ticket.comments.push(commentData);
-
-            Ticket.update({id: $stateParams.id}, $scope.ticket);
-
+        $scope.addComment = function (commentData) {
+            commentData.date = new Date();
+            ticket.comments.push(commentData);
+            Ticket.update({_id: $stateParams.id}, ticket);
         }
-
     }
 );
 
