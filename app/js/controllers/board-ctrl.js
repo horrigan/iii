@@ -14,6 +14,5 @@ app.controller('BoardCtrl', function ($scope, $http, tickets, $filter) {
                 "resolved": resolved
             }
         };
-        console.log($scope.models.dropzones)
     }
 );
