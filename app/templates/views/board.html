@@ -7,7 +7,7 @@
                 <div>
                     <ul class="drop_list" dnd-list="list">
                         <h3>{{bug.status}}</h3>
-                        <li ng-repeat="ticket in list track by ticket.createdDate"
+                        <li ng-repeat="ticket in list track by ticket.id "
                             bt-ticket
                             dnd-draggable="ticket"
                             dnd-effect-allowed="move"
@@ -23,3 +23,4 @@
 </content>
 
 
+<!--item in (filteredItems = (items | orderBy:'order_prop' | filter:query | limitTo:4))-->

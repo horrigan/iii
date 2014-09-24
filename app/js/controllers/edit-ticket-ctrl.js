@@ -2,14 +2,14 @@ app.controller('EditTicketCtrl', function ($scope, $stateParams, $http, Ticket, 
         $scope.ticket = ticket;
 
         $scope.edit = function (ticket) {
-            Ticket.update({_id: ticket._id.$oid}, ticket).$promise
+            Ticket.update({_id: ticket._id}, ticket).$promise
                 .then(function () {
                     $state.go('board')
                 })
         };
 
         $scope.remove = function (ticket) {
-            Ticket.delete({_id: ticket._id.$oid}).$promise
+            Ticket.delete({_id: ticket._id}).$promise
                 .then(function () {
                     $state.go('board')
                 })

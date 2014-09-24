@@ -1,20 +1,18 @@
-app.factory('Ticket', function ($resource, constant) {
+app.factory('Ticket', function ($resource, constant, transformResponseMongo) {
     return $resource(constant.url,
         {  _id: "@Id", apiKey: constant.apiKey }, {
             update: {
                 method: 'PUT',
                 transformRequest:function(data){
                     delete data._id;
-                    delete data.$promise;
-                    delete data.$resolved;
-                    return JSON.stringify(data)
+                    return angular.toJson(data)
                 }
             },
             get:{
                 method: 'GET',
-                isArray: false
-            }
-        }
+                isArray: false,
+                transformResponse: transformResponseMongo
+            }}
     );
 });
 

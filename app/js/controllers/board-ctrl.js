@@ -5,6 +5,7 @@ app.controller('BoardCtrl', function ($scope, $http, tickets, $filter) {
         var inprogress = $filter('filter')($scope.tickets, { status: "inprogress" });
         var resolved = $filter('filter')($scope.tickets, { status: "resolved" });
 
+
         $scope.models = {
             selected: null,
             dropzones: {
@@ -13,5 +14,6 @@ app.controller('BoardCtrl', function ($scope, $http, tickets, $filter) {
                 "resolved": resolved
             }
         };
+        console.log($scope.models.dropzones)
     }
 );
