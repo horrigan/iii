@@ -23,4 +23,4 @@ app.service('transformRequestMongo', function () {
         delete data._id;
         return angular.toJson(data)
     }
-})
+});

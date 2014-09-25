@@ -1,24 +1,18 @@
 <content>
     <div class="row">
-        <div ng-repeat="(zone, list) in models.dropzones" class="col-md-4">
+        <div ng-repeat="status in statuses" class="col-md-3" ui-on-drop="dropColumn($data, status)">
             <div class="dropzone box box-yellow">
-                <h3 id="{{zone}}">Dropzone {{zone}}</h3>
+                <h3 class="title {{status}}">{{status}}</h3>
 
-                <div>
-                    <ul class="drop_list" dnd-list="list">
-                        <h3>{{bug.status}}</h3>
-                        <li ng-repeat="ticket in list track by ticket.id "
-                            bt-ticket
-                            dnd-draggable="ticket"
-                            dnd-effect-allowed="move"
-                            dnd-moved="list.splice($index, 1)"
-                            dnd-selected="models.selected = ticket"
-                            ng-class="{selected: models.selected === ticket}">
-                        </li>
+                <div class="column_{{status}}">
+                    <ul class="drop_list">
+                        <li bt-ticket ng-repeat="ticket in tickets  | filter : status track by $index"
+                            ui-draggable="true" drag="ticket"></li>
                     </ul>
                 </div>
             </div>
         </div>
+        <div class="col-md-3" ui-view></div>
     </div>
 </content>
 

@@ -1,18 +1,24 @@
-app.controller('BoardCtrl', function ($scope, $http, tickets, $filter) {
+app.controller('BoardCtrl', function ($scope, $http, tickets, Ticket, $state, $stateParams) {
         $scope.tickets = tickets;
 
-        var todo = $filter('filter')($scope.tickets, { status: "todo" });
-        var inprogress = $filter('filter')($scope.tickets, { status: "inprogress" });
-        var resolved = $filter('filter')($scope.tickets, { status: "resolved" });
+        $scope.addCol = function (ticket) {
+            $state.go('board.add-col', { id: ticket._id })
+        };
+        $scope.statuses = ['todo', 'inprogress', 'resolved'];
 
-
-        $scope.models = {
-            selected: null,
-            dropzones: {
-                "todo": todo,
-                "inprogress": inprogress,
-                "resolved": resolved
-            }
+        $scope.dropColumn = function (ticket, column) {
+            angular.forEach($scope.tickets, function (item) {
+                if (item.id === ticket.id) {
+                    item.status = column;
+                    Ticket.update({_id: item._id}, item).$promise.then(function () {
+                        $state.transitionTo($state.current, $stateParams, {
+                            reload: true,
+                            inherit: false,
+                            notify: true
+                        });
+                    })
+                }
+            });
         };
     }
 );

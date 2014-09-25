@@ -16,6 +16,7 @@
     "angular-ui-router": "0.2.8-bowratic-tedium",
     "angular-strap": "~2.1.0",
     "angular-dragdrop": "https://github.com/ganarajpr/angular-dragdrop.git",
-    "angular-drag-and-drop-lists":"1.1.0"
+    "angular-bootstrap": "0.11.0 "
+
   }
 }

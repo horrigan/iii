@@ -1,9 +1,9 @@
-<div class="bug" id="{{ticket.id}}">
-    <div class="bug_content">
-        <a ui-sref="edit-ticket({id: ticket._id})" class="bug_href">ticket id: {{ticket.id}}</a>
-        <span class="bug_title ">ticket title: {{ticket.title}}</span>
-        <span class="bug_desc">ticket description: {{ticket.description |limitTo: 20}} </span>
-        <span class="bug_date">ticket date:{{ticket.createdDate | date:"dd/MM/yyyy"}}</span>
+<div ng-click="addCol(ticket)" class="ticket" id="{{ticket.id}}">
+    <div class="ticket_content">
+        <a ui-sref="edit-ticket({id: ticket._id})" class="ticket_href">ticket id: {{ticket.id}}</a>
+        <span class="ticket_title  ">ticket title: {{ticket.title}}</span>
+        <span class="ticket_desc ">ticket description: {{ticket.description |limitTo: 20}} </span>
+        <span class="ticket_date ">ticket date:{{ticket.createdDate | date:"dd/MM/yyyy"}}</span>
     </div>
 </div>
 
