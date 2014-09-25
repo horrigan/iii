@@ -1,23 +1,23 @@
 app.controller('AddTicketCtrl', function ($scope, $http, $state, $stateParams, Ticket, limitToFilter, constant, Author) {
     $scope.getAuthors = function (val) {
         return Author.search({q: JSON.stringify({name: {'$regex': val}})}).$promise.then(function (result) {
-            var log = [];
+            var namesArr = [];
             angular.forEach(result, function (value) {
                 this.push(value.name + ' ' + value.surname);
-            }, log);
-            return log
+            }, namesArr);
+            return namesArr
         })
     };
-    $scope.bug = {
+    $scope.ticket = {
         createdDate: new Date(),
         status: 'todo',
         comments: []
     };
-    $scope.postBugToDb = function (bug) {
+    $scope.postTicketToDb = function (ticket) {
         Ticket.query({s: {"id": -1}, l: 1}).$promise
             .then(function (data) {
-                bug.id = data.length ? data[0].id + 1 : 1;
-                Ticket.save(bug).$promise
+                ticket.id = data.length ? data[0].id + 1 : 1;
+                Ticket.save(ticket).$promise
                     .then(function () {
                         $state.go('board')
                     })

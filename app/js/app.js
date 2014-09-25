@@ -8,7 +8,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'templates/views/board.html',
             controller: 'BoardCtrl',
             resolve: {
-                tickets: function ($http, Ticket) {
+                tickets: function (Ticket) {
                     return Ticket.query().$promise
                 }
             }
@@ -28,7 +28,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'templates/views/edit-ticket.html',
             controller: 'EditTicketCtrl',
             resolve: {
-                ticket: function ($http, Ticket, $stateParams) {
+                ticket: function (Ticket, $stateParams) {
                     return Ticket.get({_id: $stateParams.id}).$promise
                 }
             }

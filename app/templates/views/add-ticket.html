@@ -10,21 +10,21 @@
 
                     <div class="controls">
 
-                        <span>{{bug.createdDate | date:"dd/MM/yyyy"}}</span>
+                        <span>{{ticket.createdDate | date:"dd/MM/yyyy"}}</span>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="title">Title</label>
 
                     <div class="controls">
-                        <input type="text" data-ng-model="bug.title" id="title" ng-readonly="false" required>
+                        <input type="text" data-ng-model="ticket.title" id="title" ng-readonly="false" required>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="description">Description</label>
 
                     <div class="controls">
-                        <textarea id="description" data-ng-model="bug.description" class="new_ticket_desc"
+                        <textarea id="description" data-ng-model="ticket.description" class="new_ticket_desc"
                                   required></textarea>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                     <label class="control-label" for="type">* Type</label>
 
                     <div class="controls">
-                        <select data-ng-model="bug.type" id="type" required>
+                        <select data-ng-model="ticket.type" id="type" required>
                             <option value="Logic bug" selected="selected">Logic bug</option>
                             <option value="Syntax bug">Syntax bug</option>
                             <option value="Resource bug">Resource bug</option>
@@ -46,14 +46,14 @@
 
                     <div class="controls">
                         <input type="text" id="status" class="status_todo" readonly>
-                        <span class="status_span">{{bug.status}}</span>
+                        <span class="status_span">{{ticket.status}}</span>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="priority">Priority</label>
 
                     <div class="controls">
-                        <select id="priority" data-ng-model="bug.priority" required>
+                        <select id="priority" data-ng-model="ticket.priority" required>
                             <option value="Low">Low-Impact</option>
                             <option value="Normal">Normal</option>
                             <option value="Important">Important</option>
@@ -65,15 +65,15 @@
                     <label class="control-label" for="assignee">* Assignee</label>
 
                     <div class="controls" id="assignee">
-                        <input type="text" ng-model="typeahead" typeahead-template-url typeahead-loading  typeahead="user for user in getAuthors($viewValue)" >
+                        <input type="text" ng-model="ticket.assignee" typeahead-template-url typeahead-loading  typeahead="user for user in getAuthors($viewValue)" >
                     </div>
                 </div>
 
                 <div class="control-group">
                     <div class="controls submit_panel">
-                        <input class="btn btn-primary" ng-disabled="ticketForm.$invalid" ng-click="postBugToDb(bug)"
+                        <input class="btn btn-primary" ng-disabled="ticketForm.$invalid" ng-click="postTicketToDb(ticket)"
                                type="submit" value="Add">
-                        <a class="btn" ng-href="/">Cancel</a>
+                        <a class="btn" ui-sref="board">Cancel</a>
                     </div>
                 </div>
             </fieldset>

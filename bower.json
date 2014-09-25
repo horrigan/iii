@@ -1,8 +1,8 @@
 {
   "name": "bugtracker",
-  "description": "A starter project for AngularJS",
+  "description": "BugTracker app",
   "version": "0.0.0",
-  "homepage": "https://github.com/angular/angular-phonecat",
+  "homepage": "",
   "license": "MIT",
   "private": true,
   "dependencies": {
@@ -15,7 +15,7 @@
     "angular-animate": "~1.2.x",
     "angular-ui-router": "0.2.8-bowratic-tedium",
     "angular-strap": "~2.1.0",
-    "angular-dragdrop":"1.0.7",
+    "angular-dragdrop": "https://github.com/ganarajpr/angular-dragdrop.git",
     "angular-drag-and-drop-lists":"1.1.0"
   }
 }
