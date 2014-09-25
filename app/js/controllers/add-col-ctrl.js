@@ -14,7 +14,12 @@ app.controller('AddColCtrl', function ($scope, $state, $stateParams, boardTicket
     $scope.remove = function (ticket) {
         Ticket.delete({_id: ticket._id}).$promise
             .then(function () {
-                $state.go('board')
+                $state.transitionTo('board',{
+                    reload: true,
+                    inherit: false,
+                    notify: true
+                })
+
             })
     };
 
