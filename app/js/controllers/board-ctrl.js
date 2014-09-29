@@ -2,7 +2,7 @@ app.controller('BoardCtrl', function ($scope, $http, tickets, Ticket, $state, $s
         $scope.tickets = tickets;
 
         $scope.addCol = function (ticket) {
-            $state.go('board.add-col', { id: ticket._id })
+            $state.go('board.panel', { id: ticket._id })
         };
         $scope.statuses = ['todo', 'inprogress', 'resolved'];
 

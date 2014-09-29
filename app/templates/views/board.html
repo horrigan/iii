@@ -1,18 +1,19 @@
 <content>
     <div class="row">
-        <div ng-repeat="status in statuses" class="col-md-3" ui-on-drop="dropColumn($data, status)">
+        <div drag-hover-class="drag-hover-col" ng-repeat="status in statuses" class="col-md-3 drop_col" ui-on-drop="dropColumn($data, status)">
             <div class="dropzone box box-yellow">
                 <h3 class="title {{status}}">{{status}}</h3>
 
                 <div class="column_{{status}}">
                     <ul class="drop_list">
                         <li bt-ticket ng-repeat="ticket in tickets  | filter : status track by $index"
-                            ui-draggable="true" drag="ticket"></li>
+                            ui-draggable="true" drag="ticket" ></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="col-md-3" ui-view></div>
+
     </div>
 </content>
 

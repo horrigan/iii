@@ -48,7 +48,12 @@ q:before, q:after {
     content: '';
     content: none;
 }
-
+html, body{
+    min-height: 100%;
+}
+body{
+    position: relative;
+}
 .drop_list {
     min-height: 200px;
 }
@@ -175,7 +180,8 @@ content {
     border-radius: 5px;
     margin: 0 auto 30px;
     padding: 30px;
-    width: 600px;
+    max-width: 600px;
+    width:100%;
 }
 
 .board_new_ticket_content {
@@ -215,18 +221,17 @@ content {
     resize: none;
     width: 100%;
 }
-
-.coment_author {
-    float: right;
-
+.comments_head, .coment_author{
+    text-align: center;
+    padding:3px;
 }
 
 .name_author {
-    margin-left: 295px;
     position: relative;
-
 }
-
+.post-comment{
+    margin-top:10px;
+}
 .coment_com_leaved {
     width: 100%;
     border-bottom: 1px solid gray;
@@ -246,7 +251,7 @@ content {
 
 .new_ticket_desc {
     height: 90px;
-    width: 535px;
+    width: 90%;
     resize: none;
 }
 
@@ -266,7 +271,21 @@ content {
 .readonly {
     background: #eeeeec;
 }
-
+.new_class{
+    background:red;
+}
+.drop_col{
+    -webkit-transition:all 0.3s ease 0s ;
+    -moz-transition:all 0.3s ease 0s ;
+    -ms-transition:all 0.3s ease 0s ;
+    -o-transition:all 0.3s ease 0s ;
+    transition:all 0.3s ease 0s ;
+    padding-bottom:200px;
+}
+.drag-hover-col{
+    background: white;
+    border:1px dashed #00b7fd;
+}
 .ng-invalid.ng-dirty {
     border-color: #FA787E;
     box-shadow: 1px 1px 3px green #FA787E;
@@ -279,4 +298,60 @@ content {
 
 .ng-pristine .ng-invalid {
     border-color: gray;
+}
+.btn-time-track{
+    background: #428bca;
+    padding:10px;
+    margin:10px auto;
+    color:white;
+}
+.ng-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.5);
+}
+.ng-modal-dialog {
+    z-index:10000;
+    position: absolute;
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 4px 4px 80px #000;
+}
+.ng-modal-dialog-content {
+    padding:10px;
+    text-align: left;
+}
+.ng-modal-close {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 120%;
+    display: inline-block;
+    font-weight: bold;
+    font-family: 'arial', 'sans-serif';
+}
+.table_view_content{
+    margin:0 auto;
+    width:80%
+}
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 100%;
+    min-heigth:300px;
+    height:100%;
+    overflow: hidden;
+}
+.ngViewport{
+    overflow:auto;
 }

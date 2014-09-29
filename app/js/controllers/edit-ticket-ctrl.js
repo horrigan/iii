@@ -1,10 +1,13 @@
 app.controller('EditTicketCtrl', function ($scope, $stateParams, $http, Ticket, $state, ticket) {
         $scope.ticket = ticket;
-
+        $scope.modalShown = false;
+        $scope.toggleModal = function() {
+            $scope.modalShown = !$scope.modalShown;
+        };
         $scope.edit = function (ticket) {
             Ticket.update({_id: ticket._id}, ticket).$promise
                 .then(function () {
-                    $state.go('board')
+                  $state.go('board')
                 })
         };
 
@@ -22,6 +25,5 @@ app.controller('EditTicketCtrl', function ($scope, $stateParams, $http, Ticket, 
         }
     }
 );
-
 
 

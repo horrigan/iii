@@ -1,4 +1,4 @@
-var app = angular.module('bugtracker', ['ui.router', "ngResource", "ngRoute", 'ui.bootstrap', 'ngDragDrop'  ]);
+var app = angular.module('bugtracker', ['ui.router', "ngResource", "ngRoute", 'ui.bootstrap', 'ngDragDrop' ,'ngGrid' ]);
 app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
 
@@ -14,13 +14,23 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             }
 
         })
-        .state('board.add-col', {
-            url: 'add-col/:id',
-            templateUrl: 'templates/views/board.add-col.html',
-            controller: 'AddColCtrl',
+        .state('board.panel', {
+            url: 'panel/:id',
+            templateUrl: 'templates/views/edit-ticket.html',
+            controller: 'EditTicketCtrl',
             resolve: {
-                boardTicket: function (Ticket, $stateParams) {
+                ticket: function (Ticket, $stateParams) {
                     return Ticket.get({_id: $stateParams.id}).$promise
+                }
+            }
+        })
+        .state('table-view',{
+            url: '/table-view',
+            templateUrl: 'templates/views/table-view.html',
+            controller:'TableCtrl',
+            resolve: {
+                tickets: function (Ticket) {
+                    return Ticket.query().$promise
                 }
             }
         })
