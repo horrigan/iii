@@ -355,3 +355,26 @@ content {
 .ngViewport{
     overflow:auto;
 }
+
+.trackedInp{
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+}
+.trackedVal, .trackedHead{
+    font-family: Lucida Grande;
+    font-size: 180%;
+    margin-top: 20px;
+    margin-bottom:20px;
+    text-align: center;
+}
+.trackedHead{
+    font-size: 120%;
+    margin-top: 20px;
+    margin-bottom:20px;
+    text-align: center;
+}
+.trackedControls{
+    margin:0 auto;
+    width:65%
+}

@@ -21,3 +21,36 @@
 
   }
 }
+/*
+(function myFunction() {
+    var str = "12hhh 12d 12s dsadas"; 
+    var res = str.match(/ *(\d+)([dhms])/gm);
+    console.log(res);var a = parseInt(res[0]);console.log(a)
+    var newArr = []
+    for(var i=0;i< res.length;i++){
+        newArr.push(res[i].trim())  
+    } 
+})()
+*/
+/*var dd = parseInt(str.match(/ *(\d+)([d])/gm) || 0 )
+var hh = parseInt(str.match(/ *(\d+)([h])/gm) || 0 )
+var mm = parseInt(str.match(/ *(\d+)([m])/gm) || 0 )
+var ss = parseInt(str.match(/ *(\d+)([s])/gm) || 0)
+var days =  dd.length != 0: parseInt(dd[0]) 
+var hours = hh.length != 0: parseInt(hh[0]) 
+var min = mm.length > !=0: parseInt(mm[0]) 
+var sec = ss.length > !=0: parseInt(ss[0]) */
+
+
+var obj = {
+  days:parseInt(str.match(/ *(\d+)([d])/gm) || 0 ) ,
+  hours: parseInt(str.match(/ *(\d+)([h])/gm) || 0 ) ,
+  min: parseInt(str.match(/ *(\d+)([m])/gm) || 0 ) ,
+  sec: parseInt(str.match(/ *(\d+)([s])/gm) || 0)
+}
+var allSec = (obj.days * 60 * 60 * 8) + (obj.hours * 60 * 60) + (obj.min * 60) + obj.sec
+var days = parseInt( allSec/(60 * 60 * 8) )
+var hours = parseInt((allSec - (days * 60 * 60 * 8))/(60 * 60))
+var min = parseInt((allSec - ((days * 60 * 60 * 8) + (hours * 60 * 60)))/60)
+var sec  = parseInt(allSec - ((days * 60 * 60 * 8) + (hours * 60 * 60) + (min *60)))
+

@@ -92,9 +92,16 @@
            <div>
                 <div>
                     <button ng-click='toggleModal()'>track your working time</button>
-                    <modal-dialog show='modalShown' width='400px' height='400px'>
-                        <input  ng-model="ticket.trackTime" />
-
+                    <modal-dialog show='modalShown' width='400px' height='200px'>
+                        <form name="trackTimeForm">
+                            <div class="trackedHead">Track your working time</div>
+                            <input class="trackedInp" placeholder="1d 12h 30m" data-ng-model="ticket.trackedTime"/>
+                            <div class="trackedVal" ng-bind="totalTime()"></div>
+                                <div class="trackedControls">
+                                    <input value="submit" class="btn btn-primary" ng-click="addTrackedTime(ticket)" ng-disabled="trackTimeForm.$invalid"/>
+                                    <a class="btn" >Cancel</a>
+                                </div>
+                        </form>
                     </modal-dialog>
                 </div>
             </div>
@@ -145,7 +152,9 @@
                 </tab>
                 <tab heading="Worklog">
                     <div class="control-group">
-                        work log
+                        <div data-ng-repeat="trackedTime in ticket.trackedTimeArr ">
+                            <div>{{trackedTime}}</div>
+                        </div>
                     </div>
                 </tab>
 

@@ -11,7 +11,8 @@ app.controller('AddTicketCtrl', function ($scope, $http, $state, $stateParams, T
     $scope.ticket = {
         createdDate: new Date(),
         status: 'todo',
-        comments: []
+        comments: [],
+        trackedTimeArr: []
     };
     $scope.postTicketToDb = function (ticket) {
         Ticket.query({s: {"id": -1}, l: 1}).$promise
