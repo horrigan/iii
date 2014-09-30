@@ -80,6 +80,28 @@
                         </select>
                     </div>
                 </div>
+                <div class="control-group">
+                    <label class="control-label" for="status">Track your task time</label>
+
+                    <div>
+                        <button class="btn-track" ng-click='toggleModal()'>Track</button>
+
+                        <modal-dialog show='modalShown' width='400px' height='200px'>
+                            <form name="trackTimeForm">
+                                <div class="trackedHead">Track your working time</div>
+                                <input class="trackedInp" placeholder="1d 12h 30m" data-ng-model="trackedTime"/>
+
+                                <div class="trackedVal" data-ng-model="ticket.trackedCurrTask"
+                                     ng-bind="totalTime(trackedTime)"></div>
+                                <div class="trackedControls">
+                                    <input value="submit" class="btn btn-primary" ng-click="addTrackedTime(ticket)"
+                                           ng-disabled="trackTimeForm.$invalid"/>
+                                </div>
+                            </form>
+                        </modal-dialog>
+                    </div>
+                </div>
+
 
                 <div class="control-group submit_panel">
                     <div class="controls">
@@ -89,42 +111,29 @@
                     </div>
                 </div>
             </fieldset>
-           <div>
-                <div>
-                    <button ng-click='toggleModal()'>track your working time</button>
-                    <modal-dialog show='modalShown' width='400px' height='200px'>
-                        <form name="trackTimeForm">
-                            <div class="trackedHead">Track your working time</div>
-                            <input class="trackedInp" placeholder="1d 12h 30m" data-ng-model="ticket.trackedTime"/>
-                            <div class="trackedVal" ng-bind="totalTime()"></div>
-                                <div class="trackedControls">
-                                    <input value="submit" class="btn btn-primary" ng-click="addTrackedTime(ticket)" ng-disabled="trackTimeForm.$invalid"/>
-                                    <a class="btn" >Cancel</a>
-                                </div>
-                        </form>
-                    </modal-dialog>
-                </div>
-            </div>
-                <hr>
+
+            <hr>
 
             <tabset justified="true">
                 <tab heading="Comments">
                     <div class="control-group">
                         <form name="commentForm">
                             <fieldset>
-                                <label class="control-label" class="comments_head" for="comments">leave your comment</label>
+                                <label class="control-label" class="comments_head" for="comments">leave your
+                                    comment</label>
 
                                 <div class="controls">
                                     <textarea id="comments" data-ng-model="commentData.comment" class="coment_textarea"
                                               placeholder="Something about problem" rows="7" type="text"
 
                                               ng-readonly="readonly"></textarea>
-                                    <span class="name_author clearfix">your name</span><input data-ng-model="commentData.author"
-                                                                                     type="text"
-                                                                                     placeholder="John Doe"
-                                                                                     class="coment_author"
-                                                                                     ng-readonly="readonly"
-                                                                                     maxlength="20">
+                                    <span class="name_author clearfix">your name</span><input
+                                        data-ng-model="commentData.author"
+                                        type="text"
+                                        placeholder="John Doe"
+                                        class="coment_author"
+                                        ng-readonly="readonly"
+                                        maxlength="20">
                                 </div>
                                 <input class="btn btn-primary post-comment" ng-disabled="commentForm.$invalid"
                                        ng-click="addComment(commentData)"

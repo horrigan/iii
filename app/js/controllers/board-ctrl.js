@@ -11,7 +11,7 @@ app.controller('BoardCtrl', function ($scope, $http, tickets, Ticket, $state, $s
                 if (item.id === ticket.id) {
                     item.status = column;
                     Ticket.update({_id: item._id}, item).$promise.then(function () {
-                        $state.transitionTo($state.current, $stateParams, {
+                        $state.transitionTo('board', $stateParams, {
                             reload: true,
                             inherit: false,
                             notify: true

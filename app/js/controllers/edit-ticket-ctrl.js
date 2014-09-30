@@ -5,21 +5,21 @@ app.controller('EditTicketCtrl', function ($scope, $stateParams, $http, Ticket, 
             $scope.modalShown = !$scope.modalShown;
         };
 
-        $scope.ticket.trackedTime = '1h 30m';
-        $scope.totalTime = function () {
-
+        $scope.trackedTime = '1h 30m';
+        $scope.totalTime = function (trackedTime) {
             var dateObj = {
-                days: parseInt($scope.ticket.trackedTime.match(/ *(\d+)([d])/gm) || 0),
-                hours: parseInt($scope.ticket.trackedTime.match(/ *(\d+)([h])/gm) || 0),
-                min: parseInt($scope.ticket.trackedTime.match(/ *(\d+)([m])/gm) || 0),
-                sec: parseInt($scope.ticket.trackedTime.match(/ *(\d+)([s])/gm) || 0)
+                days: parseInt(trackedTime.match(/ *(\d+)([d])/gm) || 0),
+                hours: parseInt(trackedTime.match(/ *(\d+)([h])/gm) || 0),
+                min: parseInt(trackedTime.match(/ *(\d+)([m])/gm) || 0),
+                sec: parseInt(trackedTime.match(/ *(\d+)([s])/gm) || 0)
             };
             var allSec = (dateObj.days * 60 * 60 * 8) + (dateObj.hours * 60 * 60) + (dateObj.min * 60) + dateObj.sec;
             var days = parseInt(allSec / (60 * 60 * 8));
             var hours = parseInt((allSec - (days * 60 * 60 * 8)) / (60 * 60));
             var min = parseInt((allSec - ((days * 60 * 60 * 8) + (hours * 60 * 60))) / 60);
             var sec = parseInt(allSec - ((days * 60 * 60 * 8) + (hours * 60 * 60) + (min * 60)));
-            return days + ' days ' + hours + ' hours ' + min + ' min ' + sec + ' sec ';
+            ticket.trackedCurrTask = days + ' days ' + hours + ' hours ' + min + ' min ' + sec + ' sec ';
+            return ticket.trackedCurrTask
 
         };
 
@@ -47,7 +47,7 @@ app.controller('EditTicketCtrl', function ($scope, $stateParams, $http, Ticket, 
 
         };
         $scope.addTrackedTime = function (ticket) {
-            ticket.trackedTimeArr.push(ticket.trackedTime);
+            ticket.trackedTimeArr.push(ticket.trackedCurrTask);
             Ticket.update({_id: $stateParams.id}, ticket).$promise
                 .then(function () {
                     $state.transitionTo($state.current, $stateParams, { reload: true, inherit: false, notify: true });
