@@ -398,8 +398,8 @@ content {
 }
 
 .trackedControls {
-    margin: 0 auto;
-    width: 50%
+    margin:  auto;
+    width: 80%
 }
 
 .btn-track {
@@ -410,8 +410,8 @@ content {
 }
 
 .table-view {
-    margin: 0 auto;
-    width: 400px
+
+
 }
 
 .table-view th {
@@ -439,6 +439,7 @@ content {
 
 .table-view td {
     vertical-align: middle;
+    text-align: center;
 }
 
 .cancel-board {

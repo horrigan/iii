@@ -87,17 +87,7 @@
                         <button class="btn-track" ng-click='toggleModal()'>Track</button>
 
                         <modal-dialog show='modalShown' width='400px' height='200px'>
-                            <form name="trackTimeForm">
-                                <div class="trackedHead">Track your working time</div>
-                                <input class="trackedInp" placeholder="1d 12h 30m" data-ng-model="trackedTime"/>
-
-                                <div class="trackedVal" data-ng-model="ticket.trackedCurrTask"
-                                     ng-bind="totalTime(trackedTime)"></div>
-                                <div class="trackedControls">
-                                    <input value="submit" class="btn btn-primary" ng-click="addTrackedTime(ticket)"
-                                           ng-disabled="trackTimeForm.$invalid"/>
-                                </div>
-                            </form>
+                            <bt-time-tracker data="ticket" ></bt-time-tracker>
                         </modal-dialog>
                     </div>
                 </div>
@@ -161,8 +151,14 @@
                 </tab>
                 <tab heading="Worklog" class="tab_head">
                     <div class="control-group">
+                        <select selected="default" data-ng-model="filterParam">
+                            <option selected value="default">default</option>
+                            <option value="days">days</option>
+                            <option value="hours">hours</option>
+                            <option value="minutes">minutes</option>
+                        </select>
                         <div data-ng-repeat="trackedTime in ticket.trackedTimeArr track by $index">
-                            <div class="task_block">Task time: {{trackedTime}}</div>
+                            <div class="task_block">Task time: {{trackedTime.time | minuteFilter:filterParam}}<br> Author: {{trackedTime.author}}</div>
                         </div>
                     </div>
                 </tab>
