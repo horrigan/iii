@@ -1,4 +1,4 @@
-var app = angular.module('bugtracker', ['ui.router', "ngResource", "ngRoute", 'ui.bootstrap', 'ngDragDrop' ,'ngGrid', 'ui.sortable' ]);
+var app = angular.module('bugtracker', ['ui.router', "ngResource", "ngRoute", 'ui.bootstrap', 'ngDragDrop' , 'ngGrid' ]);
 app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
 
@@ -24,10 +24,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 }
             }
         })
-        .state('table-view',{
+        .state('table-view', {
             url: '/table-view',
             templateUrl: 'templates/views/table-view.html',
-            controller:'TableCtrl',
+            controller: 'TableCtrl',
             resolve: {
                 tickets: function (Ticket) {
                     return Ticket.query().$promise

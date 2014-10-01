@@ -16,10 +16,11 @@ app.directive('btTableView', function ($filter) {
             $scope.order('-id', false);
 
             $scope.totalItems = $scope.tickets.length;
-
             $scope.currentPage = 1;
             $scope.numPerPage = 5;
-
+            $scope.setPage = function (pageNo) {
+                $scope.currentPage = pageNo;
+            };
             $scope.paginate = function (value) {
                 var begin, end, index;
                 begin = ($scope.currentPage - 1) * $scope.numPerPage;

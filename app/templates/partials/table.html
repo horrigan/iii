@@ -7,8 +7,8 @@
             </th>
         </tr>
         </thead>
-        <tbody >
-        <tr ng-repeat="ticket in tickets | filter: paginate">
+        <tbody ui-on-drop="dropColumn($data, status)">
+        <tr ng-repeat="ticket in tickets | filter: paginate" ui-draggable="true" drag="ticket">
 
             <td><a ui-sref="edit-ticket({id: ticket._id})">{{ticket.id}}</a></td>
             <td>{{ticket.status}}</td>
@@ -23,5 +23,6 @@
                 max-size="5" boundary-links="true"
                 items-per-page="numPerPage" class="pagination-sm">
     </pagination>
+
     <div ng-transclude></div>
 </div>

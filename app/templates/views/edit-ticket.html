@@ -115,7 +115,7 @@
             <hr>
 
             <tabset justified="true">
-                <tab heading="Comments">
+                <tab heading="Comments" class="tab_head">
                     <div class="control-group">
                         <form name="commentForm">
                             <fieldset>
@@ -159,10 +159,10 @@
                         </div>
                     </div>
                 </tab>
-                <tab heading="Worklog">
+                <tab heading="Worklog" class="tab_head">
                     <div class="control-group">
-                        <div data-ng-repeat="trackedTime in ticket.trackedTimeArr ">
-                            <div>{{trackedTime}}</div>
+                        <div data-ng-repeat="trackedTime in ticket.trackedTimeArr track by $index">
+                            <div class="task_block">Task time: {{trackedTime}}</div>
                         </div>
                     </div>
                 </tab>
