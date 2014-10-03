@@ -1,4 +1,4 @@
-var app = angular.module('bugtracker', ['ui.router', "ngResource", "ngRoute", 'ui.bootstrap', 'ngDragDrop' , 'ngGrid' ]);
+var app = angular.module('bugtracker', ['ui.router', "ngResource", "ngRoute", 'ui.bootstrap', 'ngDragDrop' ,'ngSanitize']);
 app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
 

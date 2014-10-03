@@ -3,6 +3,7 @@ app.directive('btTimeTracker', function(Ticket,$stateParams,$state) {
         restrict: 'EA',
         scope: {
             ticket: '=data'
+
         },
         replace: true,
         template:'<form name="trackTimeForm">'+
@@ -16,6 +17,7 @@ app.directive('btTimeTracker', function(Ticket,$stateParams,$state) {
                  '</form>',
 
         link: function(scope, element, attrs) {
+
             scope.trackedData = {};
             scope.trackedTime = '1h 30m';
             scope.totalTime = function (trackedTime) {
