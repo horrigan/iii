@@ -3,11 +3,11 @@ app.controller('TableCtrl', function ($scope, tickets, $filter) {
     var columnsHeaders = [];
     angular.forEach($scope.tickets[0], function (value, key) {
         this.push(key);
-    }, columnsHeaders);
+}, columnsHeaders);
     $scope.columnsHeaders = columnsHeaders.sort();
     $scope.templateObj = {
         _id: function (cell) {
-            return ('<div class=column_id><a '+ 'ui-sref'+ '='+ 'edit-ticket({id: ticket._id})'+' href=/#/edit-ticket/'+ cell +'>' + cell+  '</a>')
+            return '<div class=column_id><a ' + ' href=/#/edit-ticket/' + cell + '>' + cell + '</a>'
         },
         trackedTimeArr: function (cell) {
             var trackedComments = [];
@@ -18,15 +18,15 @@ app.controller('TableCtrl', function ($scope, tickets, $filter) {
             var author = trackedComments[0] ? trackedComments[0].author : ' ';
             var minutes = trackedComments[0] ? trackedComments[0].time : ' ';
             return  '<div>' +
-                '<div class="btn">' + author + '</div>' +
+                '<div>' + author + '</div>' +
                 '<div>' + minutes + '</div>' +
                 '<div>' + date + '</div>' +
                 '</div>'
 
         },
-        createdDate: function(cell){
-            var filteredCell = $filter('date')(cell,'dd/MM/yyyy')
-            return '<div>'+filteredCell+'</div>'
+        createdDate: function (cell) {
+            var filteredCell = $filter('date')(cell, 'dd/MM/yyyy')
+            return '<div>' + filteredCell + '</div>'
         }
 
     }
