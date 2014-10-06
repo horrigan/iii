@@ -441,7 +441,9 @@ content {
     vertical-align: middle;
     text-align: center;
 }
-
+.table-cell{
+    outline:1px solid black;
+}
 .cancel-board {
     display: block;
     border: 1px solid #dddddd;

@@ -1,28 +1,28 @@
 <div>
     <table>
         <thead>
+        <th ng-repeat="(i,tableHeader) in th track by $index">
+            <input type="checkbox" ng-model="column[i]" class="btn" ng-click="hide=!hide; hideColumns(tableHeader,hide)"/><div ng-bind="tableHeader"></div>
+        </th>
         <tr>
-            <th ng-repeat="header in columns">
-                <a ng-click="reverse=!reverse;order(header,reverse)">{{header}}</a>
+            <th ng-repeat="tableHeader in th | columnFilter track by $index">
+                <a ng-click="reverse=!reverse;order(tableHeader,reverse)">{{tableHeader}}</a>
             </th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="ticket in data | filter: paginate">
-
-            <td><a ui-sref="edit-ticket({id: ticket._id})">{{ticket.id}}</a></td>
-            <td>{{ticket.status}}</td>
-            <td>{{ticket.type}}</td>
-            <td>{{ticket.assignee}}</td>
-            <td>{{ticket.createdDate | date: 'dd/MM/yyyy'}}</td>
+        <tr ng-repeat="(i, ticket) in items | filter: paginate | orderBy:header:reverseSort track by $index">
+            <td ng-repeat="(i,cell) in ticket | columnFilter track by $index">
+                <div bt-table-cell cell-data="cell" build-cell="buildTemplate(cell, i, template)" ng-hide="(checkCol == i && hide==true)" ng-class="i"></div>
+            <td>
         </tr>
+        <td><input type="number" ng-model="numPerPage"/>{{numPerPage}} tickets per page</td>
         </tbody>
 
     </table>
-    <pagination total-items="totalItems" ng-model="currentPage"
-                max-size="5" boundary-links="true"
-                items-per-page="numPerPage" class="pagination-sm">
-    </pagination>
+    <pagination total-items="totalItems" ng-model="currentPage" max-size="5" boundary-links="true"
+                items-per-page="numPerPage" class="pagination-sm"></pagination>
 
     <div ng-transclude></div>
+
 </div>
