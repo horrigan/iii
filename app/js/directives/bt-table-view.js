@@ -14,7 +14,7 @@ app.directive('btTableCell', function () {
     }
 });
 
-app.directive('btTableView', function ($sce) {
+app.directive('btTableView', function () {
     return {
         restrict: 'EA',
         scope: {
@@ -42,12 +42,12 @@ app.directive('btTableView', function ($sce) {
             '<table>' +
             '<thead>' +
 
-            '<th ng-repeat="(i,header) in th track by $index">' +
-            '<div class="btn"  ng-click="hide=!hide; hideColumns(header,hide)">Hide column</div>' +
+            '<th ng-repeat="(i,tableHeader) in th track by $index">' +
+            '<div class="btn"  ng-click="hide=!hide; hideColumns(tableHeader,hide)">Hide column</div>' +
             '</th>' +
             '<tr>' +
-            '<th ng-repeat="header in th track by $index" >' +
-            '<a ng-click="reverse=!reverse;order(header,reverse)">{{header}}</a>' +
+            '<th ng-repeat="tableHeader in th track by $index" >' +
+            '<a ng-click="reverse=!reverse;order(tableHeader,reverse)">{{tableHeader}}</a>' +
             '</th>' +
             '</tr>' +
             '</thead>' +
@@ -68,7 +68,7 @@ app.directive('btTableView', function ($sce) {
             '  </div>',
         transclude: true,
         link: function (scope, element, attrs) {
-            scope.orderByField = 'firstName';
+            scope.orderByField = 'id';
             scope.reverseSort = false;
             scope.order = function (predicate, reverse) {
                 scope.header = predicate;
@@ -82,7 +82,7 @@ app.directive('btTableView', function ($sce) {
                 scope.currentPage = pageNo;
             };
             scope.hideColumns = function (columnName, hideStatus) {
-                scope.checkCol = columnName
+                scope.checkCol = hideStatus ? columnName : false
             };
 
             scope.paginate = function (value) {
