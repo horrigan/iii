@@ -1,19 +1,30 @@
 <div>
     <table>
         <thead>
-        <th ng-repeat="(i,tableHeader) in th track by $index">
-            <input type="button" class="btn" ng-model="column[i]" value="hide column"  ng-click="hide=!hide; hideColumns(tableHeader,hide)"/>
-        </th>
+        <tr>select columns you want to hide
+            <td><input class="" type="checkbox" ng-model="hideCol[0]"/>_id<br></td>
+            <td><input type="checkbox" ng-model="hideCol[1]"/>assignee<br></td>
+            <td><input type="checkbox" ng-model="hideCol[2]"/>comments<br></td>
+            <td><input type="checkbox" ng-model="hideCol[3]"/>createdDate<br></td>
+            <td><input type="checkbox" ng-model="hideCol[4]"/>description<br></td>
+            <td><input type="checkbox" ng-model="hideCol[5]"/>id<br></td>
+            <td><input type="checkbox" ng-model="hideCol[6]"/>priority<br></td>
+            <td><input type="checkbox" ng-model="hideCol[7]"/>status<br></td>
+            <td><input type="checkbox" ng-model="hideCol[8]"/>title<br></td>
+            <td><input type="checkbox" ng-model="hideCol[9]"/>trackTimeArray<br></td>
+            <td><input type="checkbox" ng-model="hideCol[10]"/>type<br></td>
+            </td>
+        </tr>
         <tr>
-            <th ng-repeat="tableHeader in th  track by $index">
+            <th ng-repeat="(i,tableHeader) in th  track by $index" ng-hide="hideCol[i]">
                 <a ng-click="reverse=!reverse;order(tableHeader,reverse)">{{tableHeader}}</a>
             </th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="(i, ticket) in items | filter: paginate | orderBy:header:reverseSort track by $index">
-            <td ng-repeat="(i,cell) in ticket  track by $index">
-                <div bt-table-cell cell-data="cell" build-cell="buildTemplate(cell, i, template)" ng-hide="(checkCol == i)" ng-class="i"></div>
+            <td ng-repeat="(i,cell) in ticket  track by $index" ng-hide="hideCol[$index]">
+                <div bt-table-cell cell-data="cell" build-cell="buildTemplate(cell, i, template)" ng-class="i"></div>
             <td>
         </tr>
         <td><input type="number" ng-model="numPerPage"/>{{numPerPage}} tickets per page</td>

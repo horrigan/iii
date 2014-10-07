@@ -410,7 +410,8 @@ content {
 }
 
 .table-view {
-
+    margin: 0 auto;
+    width: 80%;
 }
 
 .table-view th {
@@ -437,6 +438,7 @@ content {
 }
 
 .table-view td {
+    min-width: 100px;
     vertical-align: middle;
     text-align: center;
 }
@@ -473,4 +475,7 @@ content {
     text-align: center;
     font-weight: bold;
     font-family: monospace;
+}
+.ng-hide {
+    display: none !important;
 }
