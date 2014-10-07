@@ -2,18 +2,18 @@
     <table>
         <thead>
         <th ng-repeat="(i,tableHeader) in th track by $index">
-            <input type="checkbox" ng-model="column[i]" class="btn" ng-click="hide=!hide; hideColumns(tableHeader,hide)"/><div ng-bind="tableHeader"></div>
+            <input type="button" class="btn" ng-model="column[i]" value="hide column"  ng-click="hide=!hide; hideColumns(tableHeader,hide)"/>
         </th>
         <tr>
-            <th ng-repeat="tableHeader in th | columnFilter track by $index">
+            <th ng-repeat="tableHeader in th  track by $index">
                 <a ng-click="reverse=!reverse;order(tableHeader,reverse)">{{tableHeader}}</a>
             </th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="(i, ticket) in items | filter: paginate | orderBy:header:reverseSort track by $index">
-            <td ng-repeat="(i,cell) in ticket | columnFilter track by $index">
-                <div bt-table-cell cell-data="cell" build-cell="buildTemplate(cell, i, template)" ng-hide="(checkCol == i && hide==true)" ng-class="i"></div>
+            <td ng-repeat="(i,cell) in ticket  track by $index">
+                <div bt-table-cell cell-data="cell" build-cell="buildTemplate(cell, i, template)" ng-hide="(checkCol == i)" ng-class="i"></div>
             <td>
         </tr>
         <td><input type="number" ng-model="numPerPage"/>{{numPerPage}} tickets per page</td>

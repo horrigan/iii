@@ -32,9 +32,8 @@ app.directive('btTableView', function () {
                 scope.currentPage = pageNo;
             };
             scope.hideColumns = function (columnName, hideStatus) {
-                scope.checkCol = hideStatus ? columnName : false
-                scope.hide = hideStatus
-                console.log(columnName, hideStatus)
+                scope.checkCol = hideStatus ? columnName : false;
+                scope.hide = hideStatus;
             };
 
             scope.paginate = function (value) {
@@ -42,7 +41,6 @@ app.directive('btTableView', function () {
                 begin = (scope.currentPage - 1) * scope.numPerPage;
                 end = begin + scope.numPerPage;
                 index = scope.items.indexOf(value);
-
                 return (begin <= index && index < end);
             };
         }

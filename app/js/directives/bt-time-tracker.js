@@ -19,7 +19,7 @@ app.directive('btTimeTracker', function(Ticket,$stateParams,$state) {
         link: function(scope, element, attrs) {
 
             scope.trackedData = {};
-            scope.trackedTime = '1h 30m';
+            scope.trackedTime = '';
             scope.totalTime = function (trackedTime) {
                 var dateObj = {
                     days: parseInt(trackedTime.match(/ *(\d+)([d])/gm) || 0),
