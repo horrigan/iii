@@ -1,7 +1,7 @@
 <div>
     <table>
         <thead>
-        <tr>select columns you want to hide
+        <!--<tr>select columns you want to hide
             <td><input class="" type="checkbox" ng-model="hideCol[0]"/>_id<br></td>
             <td><input type="checkbox" ng-model="hideCol[1]"/>assignee<br></td>
             <td><input type="checkbox" ng-model="hideCol[2]"/>comments<br></td>
@@ -13,21 +13,25 @@
             <td><input type="checkbox" ng-model="hideCol[8]"/>title<br></td>
             <td><input type="checkbox" ng-model="hideCol[9]"/>trackTimeArray<br></td>
             <td><input type="checkbox" ng-model="hideCol[10]"/>type<br></td>
-            </td>
-        </tr>
+        </tr>-->
+        <td>
+            <div ng-repeat="column in columnsHeaders">
+                <input  ng-model="column" type="checkbox"/>{{column.$valid}}
+            </div>
+        </td>
         <tr>
-            <th ng-repeat="(i,tableHeader) in th  track by $index" ng-hide="hideCol[i]">
+            <th ng-repeat="tableHeader in columnsHeaders | filter:{valid:true}  track by $index" >
                 <a ng-click="reverse=!reverse;order(tableHeader,reverse)">{{tableHeader}}</a>
             </th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="(i, ticket) in items | filter: paginate | orderBy:header:reverseSort track by $index">
-            <td ng-repeat="(i,cell) in ticket  track by $index" ng-hide="hideCol[$index]">
-                <div bt-table-cell cell-data="cell" build-cell="buildTemplate(cell, i, template)" ng-class="i"></div>
-            <td>
+        <tr ng-repeat="ticket in items | filter: paginate | orderBy:header:reverseSort track by $index">
+            <td ng-repeat="(i,cell) in ticket track by $index" ng-hide="hideCol[$index]">
+                <div bt-table-cell cell-data="cell" build-cell="template[i]" ng-class="i"></div>
+            </td>
         </tr>
-        <td><input type="number" ng-model="numPerPage"/>{{numPerPage}} tickets per page</td>
+        <td><input type="number" ng-model="numPerPage" />tickets per page</td>
         </tbody>
 
     </table>

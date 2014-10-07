@@ -3,20 +3,17 @@ app.directive('btTableView', function () {
         restrict: 'EA',
         scope: {
             items: '=data',
-            th: '=th',
             template: '='
-        },
-        controller: function ($scope) {
-            var template = $scope.template;
-            $scope.buildTemplate = function (cell, i) {
-                if(template[i]){
-                    return template[i]
-                }return cell
-            }
         },
         templateUrl:'templates/partials/table.html',
         transclude: true,
         link: function (scope, element, attrs) {
+            var columnsHeaders = [];
+            angular.forEach(scope.items[0], function (value, key) {
+                this.push(key);
+            }, columnsHeaders);
+            scope.columnsHeaders = columnsHeaders.sort();
+
             scope.orderByField = 'id';
             scope.reverseSort = false;
             scope.order = function (predicate, reverse) {

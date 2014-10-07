@@ -1,4 +1,4 @@
-app.directive('btTableCell', function ($compile, $interpolate) {
+app.directive('btTableCell', function ($compile) {
     return {
         restrict: 'A',
         scope: {
@@ -7,8 +7,7 @@ app.directive('btTableCell', function ($compile, $interpolate) {
         },
         replace: true,
         link: function (scope, element, attrs) {
-            var content = $interpolate(scope.buildCell())(scope);
-            element.html(content);
+            element.html(scope.buildCell());
             $compile(element.contents())(scope);
         },
         template: '<div></div>'
