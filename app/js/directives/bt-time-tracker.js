@@ -6,15 +6,7 @@ app.directive('btTimeTracker', function(Ticket,$stateParams,$state) {
 
         },
         replace: true,
-        template:'<form name="trackTimeForm">'+
-                     '<div class="trackedHead">Track your working time</div>'+
-                         '<input class="trackedInp" placeholder="1d 12h 30m" data-ng-model="trackedTime"/>'+
-                     '<div class="trackedVal" data-ng-model="ticket.trackedCurrTask" ng-bind="totalTime(trackedTime)"></div>'+
-
-                     '<div data="ticket" class="trackedControls">'+
-                         '<input value="submit" class="btn btn-primary" ng-click="addTrackedTime(ticket)" ng-disabled="trackTimeForm.$invalid"/>'+
-                     '</div>'+
-                 '</form>',
+        templateUrl:'templates/partials/time-tracker.html',
 
         link: function(scope, element, attrs) {
 

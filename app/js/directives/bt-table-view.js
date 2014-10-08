@@ -5,14 +5,27 @@ app.directive('btTableView', function () {
             items: '=data',
             template: '='
         },
-        templateUrl:'templates/partials/table.html',
+        templateUrl: 'templates/partials/table.html',
         transclude: true,
         link: function (scope, element, attrs) {
             var columnsHeaders = [];
             angular.forEach(scope.items[0], function (value, key) {
-                this.push(key);
+                this.push({colName: key, valid: true});
             }, columnsHeaders);
-            scope.columnsHeaders = columnsHeaders.sort();
+            scope.columnsHeaders = columnsHeaders;
+
+            var selectedArray = [];
+            scope.selected = function (column) {
+                if (selectedArray.indexOf(column) != -1) {
+                    var index = selectedArray.indexOf(column);
+                    if (index > -1) {
+                        selectedArray.splice(index, 1);
+                    }
+                } else {
+                    selectedArray.push(column)
+                }
+                scope.selectedColumns = selectedArray;
+            };
 
             scope.orderByField = 'id';
             scope.reverseSort = false;

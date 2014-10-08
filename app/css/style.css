@@ -430,7 +430,6 @@ content {
     padding: 8px;
     line-height: 20px;
     text-align: left;
-    border-top: 1px solid #dddddd;
 }
 
 .table-view tbody tr:hover {

@@ -1,43 +1,33 @@
 <div>
     <table>
         <thead>
-        <!--<tr>select columns you want to hide
-            <td><input class="" type="checkbox" ng-model="hideCol[0]"/>_id<br></td>
-            <td><input type="checkbox" ng-model="hideCol[1]"/>assignee<br></td>
-            <td><input type="checkbox" ng-model="hideCol[2]"/>comments<br></td>
-            <td><input type="checkbox" ng-model="hideCol[3]"/>createdDate<br></td>
-            <td><input type="checkbox" ng-model="hideCol[4]"/>description<br></td>
-            <td><input type="checkbox" ng-model="hideCol[5]"/>id<br></td>
-            <td><input type="checkbox" ng-model="hideCol[6]"/>priority<br></td>
-            <td><input type="checkbox" ng-model="hideCol[7]"/>status<br></td>
-            <td><input type="checkbox" ng-model="hideCol[8]"/>title<br></td>
-            <td><input type="checkbox" ng-model="hideCol[9]"/>trackTimeArray<br></td>
-            <td><input type="checkbox" ng-model="hideCol[10]"/>type<br></td>
-        </tr>-->
-        <td>
-            <div ng-repeat="column in columnsHeaders">
-                <input  ng-model="column" type="checkbox"/>{{column.$valid}}
-            </div>
-        </td>
         <tr>
-            <th ng-repeat="tableHeader in columnsHeaders | filter:{valid:true}  track by $index" >
-                <a ng-click="reverse=!reverse;order(tableHeader,reverse)">{{tableHeader}}</a>
+        <td class="btn-group" dropdown is-open="status.isopen">
+            <button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+                Hide columns<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li ng-repeat="tableHeader in columnsHeaders"><input type="checkbox" ng-model="tableHeader.valid" ng-click="selected(tableHeader)" />{{tableHeader.colName}}</li>
+            </ul>
+        </td>
+        </tr>
+        <tr>
+            <th ng-repeat="tableHeader in columnsHeaders | filter:{valid:true}"  >
+                <a ng-click="reverse=!reverse;order(tableHeader.colName,reverse)">{{tableHeader.colName}}</a>
             </th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="ticket in items | filter: paginate | orderBy:header:reverseSort track by $index">
-            <td ng-repeat="(i,cell) in ticket track by $index" ng-hide="hideCol[$index]">
-                <div bt-table-cell cell-data="cell" build-cell="template[i]" ng-class="i"></div>
+        <tr ng-repeat="ticket in items | filter: paginate | orderBy:header:reverseSort">
+            <td ng-repeat="(key, value) in columnsHeaders | filter:{valid:true}">
+                <div bt-table-cell cell-data="ticket[value.colName]" build-cell="template[value.colName] || cell" ng-class="i"></div>
             </td>
         </tr>
-        <td><input type="number" ng-model="numPerPage" />tickets per page</td>
+        <tr><td><input type="number" ng-model="numPerPage" />tickets per page</td></tr>
         </tbody>
 
     </table>
     <pagination total-items="totalItems" ng-model="currentPage" max-size="5" boundary-links="true"
                 items-per-page="numPerPage" class="pagination-sm"></pagination>
-
     <div ng-transclude></div>
-
 </div>
