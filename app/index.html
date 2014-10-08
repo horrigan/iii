@@ -2,7 +2,7 @@
 <html ng-app="bugtracker">
 <head lang="en">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/build.min.css">
     <meta charset="UTF-8">
     <title>BugTracker</title>
 </head>
@@ -20,28 +20,12 @@
 </header>
 
 <ui-view></ui-view>
-<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-resource/angular-resource.min.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 <script src="bower_components/angular-dragdrop/draganddrop.js"></script>
-<script src="js/app.js"></script>
-<script src="js/directives/bt-ticket.js"></script>
-<script src="js/directives/bt-modal.js"></script>
-<script src="js/directives/bt-table-view.js"></script>
-<script src="js/directives/bt-table-cell.js"></script>
-<script src="js/directives/bt-time-tracker.js"></script>
-<script src="js/filters/minute-filter.js"></script>
-<script src="js/filters/reorder-filter.js"></script>
-<script src="js/services/transform-mongo-service.js"></script>
-<script src="js/services/ticket.js" ></script>
-<script src="js/services/author.js" ></script>
-<script src="js/services/constant.js" ></script>
-<script src="js/controllers/table-ctrl.js"></script>
-<script src="js/controllers/board-ctrl.js"></script>
-<script src="js/controllers/add-ticket-ctrl.js"></script>
-<script src="js/controllers/add-author-ctrl.js"></script>
-<script src="js/controllers/edit-ticket-ctrl.js"></script>
+<script src="js/build/build.js"></script>
 </body>
 </html>
