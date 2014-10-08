@@ -475,6 +475,6 @@ content {
     font-weight: bold;
     font-family: monospace;
 }
-.ng-hide {
-    display: none !important;
+.order-column{
+    margin-left:8px;
 }
