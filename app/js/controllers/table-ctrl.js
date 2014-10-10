@@ -1,4 +1,4 @@
-app.controller('TableCtrl', function ($scope, tickets) {
+angular.module('bugtracker').controller('TableCtrl', function ($scope, tickets) {
     $scope.tickets = tickets;
     $scope.templateObj = {
         id:'<div ng-bind="cell"></div>',

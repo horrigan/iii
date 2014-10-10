@@ -1,4 +1,4 @@
-app.directive('btTableCell', function ($compile) {
+angular.module('bugtracker').directive('btTableCell', function ($compile) {
     return {
         restrict: 'A',
         scope: {

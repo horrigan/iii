@@ -1,4 +1,4 @@
-app.directive('btTimeTracker', function(Ticket,$stateParams,$state) {
+angular.module('bugtracker').directive('btTimeTracker', function(Ticket,$stateParams,$state) {
     return {
         restrict: 'EA',
         scope: {

@@ -1,4 +1,4 @@
-app.filter('minuteFilter', function () {
+angular.module('bugtracker').filter('minuteFilter', function () {
     return function (minutes, filterParam) {
         switch(filterParam){
             case 'days':

@@ -1,4 +1,4 @@
-app.controller('BoardCtrl', function ($scope, $http, tickets, Ticket, $state, $stateParams) {
+angular.module('bugtracker').controller('BoardCtrl', function ($scope, $http, tickets, Ticket, $state, $stateParams) {
         $scope.tickets = tickets;
 
         $scope.addCol = function (ticket) {

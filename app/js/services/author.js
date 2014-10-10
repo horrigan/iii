@@ -1,4 +1,4 @@
-app.factory('Author', function ($resource, constant, transformMongoService) {
+angular.module('bugtracker').factory('Author', function ($resource, constant, transformMongoService) {
     return $resource(constant.authorUrl,
         {  _id: "@Id", apiKey: constant.apiKey}, {
             get: {

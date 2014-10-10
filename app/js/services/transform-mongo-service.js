@@ -1,4 +1,4 @@
-app.service('transformMongoService', function(){
+angular.module('bugtracker').service('transformMongoService', function(){
     return {
         transformRequest:  function(data) {
             delete data._id;

@@ -1,4 +1,4 @@
-app.factory('Ticket', function ($resource, constant, transformMongoService) {
+angular.module('bugtracker').factory('Ticket', function ($resource, constant, transformMongoService) {
     return $resource(constant.url,
         {  _id: "@Id", apiKey: constant.apiKey }, {
             update: {

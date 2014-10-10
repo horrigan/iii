@@ -1,4 +1,4 @@
-app.controller('AddTicketCtrl', function ($scope, $http, $state, $stateParams, Ticket, limitToFilter, constant, Author) {
+angular.module('bugtracker').controller('AddTicketCtrl', function ($scope, $http, $state, $stateParams, Ticket, limitToFilter, constant, Author) {
     $scope.getAuthors = function (val) {
         return Author.search({q: JSON.stringify({name: {'$regex': val}})}).$promise.then(function (result) {
             var namesArr = [];

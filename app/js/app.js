@@ -1,5 +1,5 @@
-var app = angular.module('bugtracker', ['ui.router', "ngResource", "ngRoute", 'ui.bootstrap', 'ngDragDrop' ]);
-app.config(function ($stateProvider, $urlRouterProvider) {
+angular.module('bugtracker', ['ui.router', "ngResource", "ngRoute", 'ui.bootstrap', 'ngDragDrop' ]);
+angular.module('bugtracker').config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
@@ -8,9 +8,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'templates/views/board.html',
             controller: 'BoardCtrl',
             resolve: {
-                tickets: function (Ticket) {
+                tickets: ['Ticket', function (Ticket) {
                     return Ticket.query().$promise
-                }
+                }]
             }
 
         })
@@ -19,9 +19,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'templates/views/edit-ticket.html',
             controller: 'EditTicketCtrl',
             resolve: {
-                ticket: function (Ticket, $stateParams) {
+                ticket:['Ticket','$stateParams', function (Ticket, $stateParams) {
                     return Ticket.get({_id: $stateParams.id}).$promise
-                }
+                }]
             }
         })
         .state('table-view', {
@@ -29,9 +29,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'templates/views/table-view.html',
             controller: 'TableCtrl',
             resolve: {
-                tickets: function (Ticket) {
+                tickets: ['Ticket', function (Ticket) {
                     return Ticket.query().$promise
-                }
+                }]
             }
         })
         .state('add-ticket', {
@@ -49,9 +49,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'templates/views/edit-ticket.html',
             controller: 'EditTicketCtrl',
             resolve: {
-                ticket: function (Ticket, $stateParams) {
+                ticket: ['Ticket','$stateParams', function (Ticket, $stateParams) {
                     return Ticket.get({_id: $stateParams.id}).$promise
-                }
+                }]
             }
         })
 });

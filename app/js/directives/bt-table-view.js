@@ -1,4 +1,4 @@
-app.directive('btTableView', function () {
+angular.module('bugtracker').directive('btTableView', function () {
     return {
         restrict: 'EA',
         scope: {

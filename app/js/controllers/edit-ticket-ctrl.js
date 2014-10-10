@@ -1,4 +1,4 @@
-app.controller('EditTicketCtrl', function ($scope, $stateParams, $http, Ticket, $state, ticket) {
+angular.module('bugtracker').controller('EditTicketCtrl', function ($scope, $stateParams, $http, Ticket, $state, ticket) {
         $scope.ticket = ticket;
         $scope.modalShown = false;
         $scope.toggleModal = function () {

@@ -1,4 +1,4 @@
-app.directive('modalDialog', function() {
+angular.module('bugtracker').directive('modalDialog', function() {
     return {
         restrict: 'E',
         scope: {
