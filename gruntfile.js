@@ -23,8 +23,6 @@ module.exports = function (grunt) {
 
             app: {
                 src: 'app/templates/**/**.html',
-
-
                 dest: 'build/app/scripts/templates.js'
             }
         },
