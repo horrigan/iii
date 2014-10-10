@@ -1,6 +1,6 @@
 angular.module('bugtracker').filter('reorderFilter', function () {
     return function (data, value) {
-        data.prototype.move = function (old_index, new_index) {
+        Array.prototype.move = function (old_index, new_index) {
             if (new_index >= this.length) {
                 var k = new_index - this.length;
                 while ((k--) + 1) {

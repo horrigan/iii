@@ -2,30 +2,30 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        clean: {
-            js: ["build/**/*.*"]
-        },
+        clean:  ["build"],
         copy: {
             main: {
                 files: [
-                    // includes files within path
-
-                    // includes files within path and its sub-directories
                     {expand: true, src: ['app/index.html'], dest: 'build/'}
-
-
                 ]
             }
         },
         ngtemplates: {
+            module: 'bugtracker',
+            options: {
+                url:    function(url) {
+                    return url.replace('.html', '');
+                },
+                htmlmin: { collapseWhitespace: true, collapseBooleanAttributes: true }
+
+
+            },
+
             app: {
                 src: 'app/templates/**/**.html',
-                dest: 'build/app/scripts/templates.js',
-                options: {
-                    htmlmin: { collapseWhitespace: true, collapseBooleanAttributes: true }
 
 
-                }
+                dest: 'build/app/scripts/templates.js'
             }
         },
         cssmin: {
@@ -39,7 +39,7 @@ module.exports = function (grunt) {
             }
         },
         usemin: {
-            html: ['build/app/index.html','build/app/index.html'],
+            html: ['build/app/index.html', 'build/app/index.html'],
             options: {
                 dest: 'build/app/index.html'
             }
@@ -56,12 +56,12 @@ module.exports = function (grunt) {
         },
         uglify: {
             build: {
+                src: 'build/app/scripts/app.js',
+                dest: 'build/app/scripts/app.min.js'
+            },
+            bower: {
                 src: 'build/app/scripts/vendor.js',
                 dest: 'build/app/scripts/vendor.min.js'
-            },
-            bower:{
-                src: 'build/app/scripts/bower_components.js',
-                dest: 'build/app/scripts/bower_components.min.js'
             }
 
         },
@@ -69,11 +69,20 @@ module.exports = function (grunt) {
         ngmin: {
             app: {
                 src: ['app/js/**/*.js'],
-                dest: 'build/app/scripts/vendor.js'
+                dest: 'build/app/scripts/app.js'
             },
-            bower:{
-                src: ['app/bower_components/**/*.js','!app/bower_components/**/*.min.js'],
-                dest: 'build/app/scripts/bower_components.js'
+            bower: {
+                src: [
+                    'app/bower_components/angular/angular.js',
+                    'app/bower_components/angular-bootstrap/ui-bootstrap.js',
+                    'app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+                    'app/bower_components/angular-dragdrop/draganddrop.js',
+                    'app/bower_components/angular-mocks/angular-mocks.js',
+                    'app/bower_components/angular-resource/angular-resource.js',
+                    'app/bower_components/angular-route/angular-route.js',
+                    'app/bower_components/angular-ui-router/release/angular-ui-router.js'
+            ],
+                dest: 'build/app/scripts/vendor.js'
             }
 
         },
@@ -81,7 +90,7 @@ module.exports = function (grunt) {
             local: {
                 options: {
                     port: 8082,
-                    base: './app',
+                    base: './build/app',
                     hostname: "*",
                     keepalive: true
                 }
@@ -98,6 +107,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-usemin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-ngmin');
-    grunt.registerTask('default', ['clean','copy','cssmin','ngmin','uglify','ngtemplates','usemin']);
+    grunt.registerTask('default', ['clean', 'copy', 'cssmin', 'ngmin', 'uglify', 'ngtemplates', 'usemin']);
 
 };
