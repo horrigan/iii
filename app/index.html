@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="bugtracker">
 <head lang="en">
-    <!-- build:css css/vendor/bootstrap.min.css -->
+    <!-- build:css css/bootstrap.min.css -->
     <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.min.css">
     <!-- endbuild -->
 
@@ -25,7 +25,7 @@
 </header>
 
 <ui-view></ui-view>
-<!-- build:js scripts/bower_components.js -->
+<!-- build:js scripts/vendor.min.js -->
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-resource/angular-resource.min.js"></script>
@@ -34,7 +34,7 @@
 <script src="bower_components/angular-dragdrop/draganddrop.js"></script>
 <!-- endbuild -->
 
-<!-- build:js scripts/vendor.min.js -->
+<!-- build:js scripts/app.min.js -->
 <script src="js/app.js"></script>
 <script src="js/directives/bt-ticket.js"></script>
 <script src="js/directives/bt-modal.js"></script>

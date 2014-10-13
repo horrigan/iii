@@ -2,35 +2,31 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        clean:  ["build"],
+        clean: ["build"],
         copy: {
             main: {
                 files: [
-                    {expand: true, src: ['app/index.html'], dest: 'build/'}
+                    {expand: true, src: ['app/index.html'], dest: 'build/'},
+                    {expand: true, flatten: true, src: ['app/bower_components/bootstrap-css-only/css/bootstrap.min.css'], dest: 'build/app/css/'}
+
                 ]
             }
         },
         ngtemplates: {
-            module: 'bugtracker',
-            options: {
-                url:    function(url) {
-                    return url.replace('.html', '');
-                },
-                htmlmin: { collapseWhitespace: true, collapseBooleanAttributes: true }
-
-
-            },
 
             app: {
                 src: 'app/templates/**/**.html',
-                dest: 'build/app/scripts/templates.js'
+                dest: 'build/app/scripts/templates.js',
+                options: {
+                    url: function (url) {
+                        return url.replace('app/', '');
+                    },
+                    module: 'bugtracker'
+                }
             }
         },
         cssmin: {
             with_banner: {
-                option: {
-                    banner: 'my minified css*?'
-                },
                 files: {
                     'build/app/css/build.min.css': ['app/css/style.css']
                 }
@@ -79,7 +75,7 @@ module.exports = function (grunt) {
                     'app/bower_components/angular-resource/angular-resource.js',
                     'app/bower_components/angular-route/angular-route.js',
                     'app/bower_components/angular-ui-router/release/angular-ui-router.js'
-            ],
+                ],
                 dest: 'build/app/scripts/vendor.js'
             }
 
@@ -88,7 +84,7 @@ module.exports = function (grunt) {
             local: {
                 options: {
                     port: 8082,
-                    base: './build/app',
+                    base: './app',
                     hostname: "*",
                     keepalive: true
                 }
@@ -106,5 +102,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-ngmin');
     grunt.registerTask('default', ['clean', 'copy', 'cssmin', 'ngmin', 'uglify', 'ngtemplates', 'usemin']);
+
 
 };
